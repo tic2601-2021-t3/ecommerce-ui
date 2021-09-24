@@ -1,0 +1,77 @@
+/*
+  Author: Rina Chua
+  Date: 24 Sep 2021
+*/
+
+@import 'common/font.scss';
+@import 'common/variable.scss';
+
+.wrapper {
+  background-color: $primary-color;
+  width: 100%;
+  min-width: 1280px;
+  position: fixed;
+  padding: 0 30px;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.title {
+  font-family: $Open-Sans;
+  font-size: $font-title;
+  display: inline-block;
+  color:white;
+  text-transform: uppercase;
+  text-align: left;
+  margin-right: 30px;
+}
+
+.menu {
+  display: inline-block;
+  vertical-align: middle;
+  color: black;
+}
+  
+.menuItem {
+  padding: 0 10px;
+  color: white;
+  text-decoration: none;
+  font-size: $font-normal;
+  font-family: $Roboto-Condensed;
+  height: 70px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 60px;
+  position: relative;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: darken($primary-color, 5%);
+  }
+}
+  
+.selectedMenu {
+  background-color: darken($primary-color, 5%);
+
+  &:after {
+    bottom: 0;
+    left: 50%;
+    border: solid transparent;
+    content: ' ';
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(250, 249, 243, 0);
+    border-bottom-color: white;
+    border-width: 8px;
+    margin-left: -8px;
+  }
+}
+
+.inputStyle {
+  background-color: white;
+  width: 400px;
+}
+
