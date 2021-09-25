@@ -3,12 +3,13 @@
   Date: 24 Sep 2021
 */
 
-import React, { Fragment } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React, {Fragment} from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {views} from 'common/permission';
 import Header from 'components/header';
-import { views } from 'common/permission';
 
 import Login from 'views/login';
+import './App.module.scss';
 
 const App = () => {
   return (

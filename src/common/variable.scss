@@ -3,8 +3,12 @@
   Date: 24 Sep 2021
 */
 
-$primary-color: #0F146D;
-$background-color: 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)';
+$primary-color: #EB5328;
+$light-primary-color: #F9DDCE;
+$white-color: #FFFFFF;
+$light-grey-color: #F5F5F5;
+
+$background-color: $light-grey-color;
 
 $error: #ff5630;
 $warning: #ffab00;
@@ -14,4 +18,6 @@ $info: #00b8d9;
 $font-small: 14px;
 $font-normal: 16px;
 $font-medium: 18px;
-$font-title: 20px
+$font-title: 20px;
+$font-large: 25px;
+$font-xlarge: 30px;
