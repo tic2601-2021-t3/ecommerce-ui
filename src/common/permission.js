@@ -5,11 +5,6 @@
 
 import _ from 'lodash';
 import Products from 'views/products';
-import Electronic from 'views/products/electronic';
-import Groceries from 'views/products/groceries';
-import Men from 'views/products/men';
-import Sports from 'views/products/sports';
-import Women from 'views/products/women';
 import Login from 'views/login';
 
 export const appear = {
@@ -28,35 +23,35 @@ export const views = {
     key: 'WOMEN',
     text: 'Women',
     link: '/women',
-    component: Women, 
+    component: null, 
     appearAt: appear.HEADER,
   }, 
   MEN: {
     key: 'MEN',
     text: 'Men',
     link: '/men',
-    component: Men, 
+    component: null, 
     appearAt: appear.HEADER,
   },
   SPORTS: {
     key: 'SPORTS',
     text: 'Sports',
     link: '/sports',
-    component: Sports, 
+    component: null, 
     appearAt: appear.HEADER,
   },
   ELECTRONIC: {
     key: 'ELECTRONIC',
     text: 'Electronic',
     link: '/electronic',
-    component: Electronic, 
+    component: null, 
     appearAt: appear.HEADER,
   },
   GROCERIES: {
     key: 'GROCERIES',
     text: 'Groceries',
     link: '/groceries',
-    component: Groceries, 
+    component: null, 
     appearAt: appear.HEADER,
   },
   LOGIN: {

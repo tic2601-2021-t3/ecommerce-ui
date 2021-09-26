@@ -7,7 +7,7 @@ import React, {Fragment} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {views} from 'common/permission';
 import Header from 'components/header';
-
+import Products from 'views/products';
 import Login from 'views/login';
 import './App.module.scss';
 
@@ -17,7 +17,8 @@ const App = () => {
       <Header/>
       <BrowserRouter forceRefresh={true}>
         <Switch>
-          <Route exact path={views.LOGIN.link} component={Login}/>
+            <Route exact path={views.PRODUCTS.link} component={Products}/>
+            <Route exact path={views.LOGIN.link} component={Login}/>
         </Switch>
       </BrowserRouter>
     </Fragment>

@@ -5,15 +5,15 @@ import {getHeader, appear} from 'common/permission';
 import Header from 'components/header';
 
 const MainLayout = () => {
-    const views = getHeader(appear.HEADER);
+    const headerMenu = getHeader(appear.HEADER);
 
     return (
         <Fragment>
             <Header />
             <BrowserRouter>
                 <Switch>
-                    {views.map((item) => (
-                        <Route key={`${item.key}-${item.href}`} exact path={item.link} component={item.component} />
+                    {headerMenu.map((item) => (
+                        <Route key={`${item.key}-${item.href}`} path={item.link} component={item.component} />
                     ))}
                 </Switch>
             </BrowserRouter>

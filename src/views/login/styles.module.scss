@@ -11,6 +11,11 @@
     margin: 0 auto;
 }
 
+img {
+    width: 80%;
+    height: auto;
+}
+
 .topTitle {
     font-family: $Open-Sans;
     font-size: $font-xlarge;
@@ -45,9 +50,4 @@
 .btnWrapper {
     min-width: 350px;
     width: 350px;
-}
-
-img {
-    width: 80%;
-    height: auto;
 }

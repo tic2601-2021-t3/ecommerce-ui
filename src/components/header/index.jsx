@@ -19,7 +19,9 @@ const Header = () => {
     const headerMenu = getHeader(appear.HEADER);
     return (
         <div className={styles.wrapper}>
-            <h3 className={styles.title}>Ecommerce Platform</h3>
+            <h3 className={styles.title}>
+                Ecommerce Platform
+            </h3>
             <div className={styles.menu}>
                 <div>
                     <BrowserRouter forceRefresh={true}>
@@ -48,14 +50,12 @@ const Header = () => {
                         />
                     </li>
                     <li>
-                        <Button 
-                            href="/login">
+                        <Button className={styles.btnWrapper} href="/login">
                             <IconButton aria-label="profile" size="small">
                                 <MdAccountCircle className={styles.btnWrapper} size={25} />
                             </IconButton>
                         </Button>
-                        <Button  className={styles.btnWrapper}
-                            href="/cart">
+                        <Button className={styles.btnWrapper} href="/cart">
                             <IconButton aria-label="profile" size="small">
                                 <GiShoppingBag className={styles.btnWrapper} size={25} />
                             </IconButton>
