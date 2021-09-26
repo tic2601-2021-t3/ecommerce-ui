@@ -54,12 +54,12 @@
   text-transform: uppercase;
 
   &:hover {
-    background-color: $light-primary-color;
+    background-color: $light-blue-color;
   }
 }
   
 .selectedMenu {
-  background-color: $light-primary-color;
+  background-color: $light-blue-color;
 
   &:after {
     bottom: 0;

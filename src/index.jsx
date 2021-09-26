@@ -14,17 +14,18 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          color: '#EB5328',
+          color: '#3975EA',
         },
         contained: {
+          backgroundColor: '#3975EA',
           color: '#FFF',
-        }
+        },
       },
     },
     MuiInput: {
       styleOverrides: {
         root: {
-          color: '#EB5328',
+          color: '#3975EA',
           minWidth: '350px',
           width: '100%',
         },
@@ -34,7 +35,7 @@ const theme = createTheme({
         underline: {
           minWidth: '350px',
           width: '100%',
-        }
+        },
       },
     },
     MuiTab: {
@@ -45,7 +46,10 @@ const theme = createTheme({
           fontFamily: 'inherit',
           width: '50%',
           selected: {
-            color: '#EB5328',
+            color: '#3975EA',
+          },
+          textColorPrimary: {
+            color: '#3975EA',
           },
         },
       },
@@ -53,8 +57,8 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: '#EB5328',
-      light: '#F9DDCE',
+      main: '#3975EA',
+      light: '#DCE5F2',
     },
   },
   typography: {

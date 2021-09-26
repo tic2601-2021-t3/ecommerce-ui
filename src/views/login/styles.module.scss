@@ -11,17 +11,17 @@
     margin: 0 auto;
 }
 
-.title {
+.topTitle {
     font-family: $Open-Sans;
-    font-size: $font-large;
+    font-size: $font-xlarge;
     text-align: center;
     font-weight: 500;
     color: $primary-color;
 }
 
-.xtitle {
+.title {
     font-family: $Open-Sans;
-    font-size: $font-xlarge;
+    font-size: $font-large;
     text-align: center;
     font-weight: 500;
     color: $primary-color;
@@ -45,4 +45,9 @@
 .btnWrapper {
     min-width: 350px;
     width: 350px;
+}
+
+img {
+    width: 80%;
+    height: auto;
 }

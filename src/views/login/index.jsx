@@ -15,7 +15,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 
-import Logo from 'images/lightmap.png';
+import Logo from 'images/lightbluemap.png';
 import styles from './styles.module.scss';
 
 const Login = () => {
@@ -31,7 +31,7 @@ const Login = () => {
         <Container fluid>
             <Row align='center'>
                 <Col align='center' md={6}>
-                    <h2 className={styles.xtitle}>
+                    <h2 className={styles.topTitle}>
                         Top 1 Leading Ecommerce Platform
                     </h2>
                     <img src={Logo} />
