@@ -20,6 +20,9 @@ export const views = {
     link: '/login',
     component: Login, 
     appearAt: null,
+    userAccess: [
+      'Merchant'
+    ],
   },
   PRODUCTS: {
     key: 'PRODUCTS',
@@ -27,6 +30,9 @@ export const views = {
     link: '/',
     component: Products, 
     appearAt: appear.HEADER,
+    userAccess: [
+      'Merchant'
+    ],
   },
   WOMEN: {
     key: 'WOMEN',

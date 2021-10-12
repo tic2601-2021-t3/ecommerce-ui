@@ -9,6 +9,7 @@ import {Redirect} from 'react-router-dom';
 
 import useURL from 'common/urls';
 import useRequest from 'common/useRequest';
+import {useAuthentication} from 'common/useAuthentication';
 
 import {TextField} from '@mui/material';
 import Button from '@mui/material/Button';
@@ -20,6 +21,7 @@ const Login = ({location}) => {
     const API_URL = useURL();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const {setAuthTokens} = useAuthentication();
 
     const referer = (location && location.state && location.state.referer) || '/';
 
@@ -40,16 +42,21 @@ const Login = ({location}) => {
         }
     }, [status]);
 
-    const customErrorId = 'error1';
+    const customId = 'id1';
 
     if (status === SUCCESS && response.status === 0) {
+        setAuthTokens(response);
+        toast.success(response.message, {
+            toastId: customId,
+        });
         return <Redirect to={referer} />;
     }
     else if (status === SUCCESS && response.status === 1) {
         toast.error(response.message, {
-            toastId: customErrorId,
+            toastId: customId,
         });
     }
+
     return (
     <div>
         <h2 className={styles.title}>

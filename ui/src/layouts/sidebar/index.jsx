@@ -101,7 +101,7 @@ const SideBar = () => {
             Huat Ah Ecommerce Platform
           </Typography>
           &nbsp;&nbsp;
-          <h5>Merchant View</h5>
+          <h5>For Merchant</h5>
         </Toolbar>
       </AppBar>
       <Drawer
