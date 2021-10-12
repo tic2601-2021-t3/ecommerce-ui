@@ -1,0 +1,40 @@
+@import 'common/font.scss';
+@import 'common/variable.scss';
+
+.wrapper {
+    background-color: $white-color;
+    width: 100%;
+    min-width: 1280px;
+    position: fixed;
+    padding: 0 30px;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    text-align: center
+}
+
+.card {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.inputWrapper{
+    >li {
+        display: block;
+        margin: 20px auto;
+        >div{
+            width: 80%;
+        }
+    }
+}
+
+.titleWrapper {
+    width: 80%;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    text-align: start;
+    font-family: $Open-Sans;
+    font-size: $font-xlarge;
+    font-weight: 500;
+}

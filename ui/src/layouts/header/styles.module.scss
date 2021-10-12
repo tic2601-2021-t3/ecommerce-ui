@@ -1,0 +1,105 @@
+/*
+  Author: Rina Chua
+  Date: 24 Sep 2021
+*/
+
+@import 'common/font.scss';
+@import 'common/variable.scss';
+
+.wrapper {
+  background-color: $white-color;
+  width: 100%;
+  position: absolute;
+  padding: 25px 0;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  text-align: center
+}
+
+.subWrapper {
+  background-color: $white-color;
+  width: 100%;
+  position: absolute;
+  padding: 0 0;
+  left: 0;
+  top: 0;
+  margin-top: 90px;
+  border-top: 1px solid $border-color;
+  z-index: 2;
+  text-align: center
+}
+
+.title {
+  font-family: $Open-Sans;
+  font-size: $font-title;
+  font-weight: 700;
+  display: inline-block;
+  color: $primary-color;
+  text-transform: uppercase;
+  text-align: left;
+  margin-right: 30px;
+}
+
+.menu {
+  display: inline-block;
+  vertical-align: middle;
+  color: black;
+}
+  
+.menuItem {
+  padding: 0 40px;
+  color: $primary-color;
+  text-decoration: none;
+  font-size: $font-normal;
+  font-family: $Roboto-Condensed;
+  height: 35px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 35px;
+  position: relative;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: $light-blue-color;
+  }
+}
+  
+.selectedMenu {
+  background-color: $light-blue-color;
+
+  &:after {
+    bottom: 0;
+    left: 50%;
+    border: solid transparent;
+    content: ' ';
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(250, 249, 243, 0);
+    border-bottom-color: white;
+    border-width: 8px;
+    margin-left: -8px;
+  }
+}
+
+.inputWrapper {
+  display: inline-block;
+
+  > li{
+    display: inline;
+    margin-right: 20px;
+  }
+}
+
+.textWrapper { 
+  > div {
+    background-color: white;
+    width: 700px;
+  }
+}
+
+.btnWrapper {
+  color: $primary-color;
+}
