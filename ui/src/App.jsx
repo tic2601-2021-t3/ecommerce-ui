@@ -18,7 +18,6 @@ const App = () => {
 
   const curUser = bytes && JSON.parse(bytes);
   const [authUser, setAuthTokens] = useState(curUser);
-  const userType = JSON.parse(sessionStorage.getItem('email')).userType;
 
   const setTokens = (data) => {
     if (!_.isEmpty(data)) {
@@ -33,7 +32,7 @@ const App = () => {
     <Fragment>
       <AuthContext.Provider value={{authUser, setAuthTokens: setTokens}}>
         {authUser !== true && <MainLayout/>}
-        {authUser === true && userType === 'Merchant' && <MerchantLayout/>}
+        {authUser === true && JSON.parse(sessionStorage.getItem('email')).userType === 'Merchant' && <MerchantLayout/>}
       </AuthContext.Provider>
     </Fragment>
   );

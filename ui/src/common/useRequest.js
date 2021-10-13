@@ -3,7 +3,6 @@
   Date: 24 Sep 2021
 */
 
-import _ from 'lodash';
 import useApiRequest from './useApiRequest';
 
 const useRequest = (

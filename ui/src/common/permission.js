@@ -3,7 +3,6 @@
   Date: 24 Sep 2021
 */
 
-import _ from 'lodash';
 import Products from 'views/products';
 import Login from 'views/user';
 import AddProduct from 'views/products/add-product';
@@ -124,3 +123,7 @@ export const getHeader = (location) => {
   });
   return headerItems;
 }
+
+export const getMerchant = (location) => {
+
+};

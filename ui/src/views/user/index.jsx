@@ -3,14 +3,8 @@
   Date: 25 Sep 2021
 */
 
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {Container, Row, Col} from 'react-grid-system';
-import {ToastContainer, toast} from 'react-toastify'
-import {Redirect} from 'react-router-dom';
-
-import useURL from 'common/urls';
-import {useAuthentication} from 'common/useAuthentication';
-import useRequest from 'common/useRequest';
 
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
@@ -27,8 +21,6 @@ import styles from './styles.module.scss';
 
 const User = ({location}) => {
     const [tabItem, setTabItem] = useState('1');
-
-    const referer = (location && location.state && location.state.referer) || '/';
 
     const onTabItemChange = (e, value) => setTabItem(value);
 

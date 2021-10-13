@@ -6,8 +6,6 @@
 import React from 'react';
 import {BrowserRouter, NavLink} from 'react-router-dom';
 import {getHeader, appear} from 'common/permission';
-import useURL from 'common/urls';
-
 import styles from './styles.module.scss';
 
 const SubHeader = () => {
