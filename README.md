@@ -10,5 +10,5 @@
 
 
 ### shortcuts
-## open vs code from terminal
+#### open vs code from terminal
 terminal > code . 
