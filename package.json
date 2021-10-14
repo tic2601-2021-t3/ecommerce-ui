@@ -43,15 +43,10 @@
   },
   "scripts": {
     "server": "node index.js",
-    "server-dev-win": "set NODE_ENV=development && node index.js",
-    "client": "cd ui && export HTTPS=true&&yarn start",
-    "watch": "cd ui && yarn watch",
     "client-win": "cd ui && set HTTPS=true&&yarn start",
     "dev": "cd ui && yarn start",
     "ui-install": "cd ui && yarn install",
     "build": "cd ui && yarn build",
-    "build-win": "cd ui && yarn build-win",
-    "winBuild": "cd ui && yarn winBuild",
     "deploy": "node deploy.js"
   },
   "author": "Rina Chua",
