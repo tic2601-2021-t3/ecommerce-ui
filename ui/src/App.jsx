@@ -32,7 +32,7 @@ const App = () => {
     <Fragment>
       <AuthContext.Provider value={{authUser, setAuthTokens: setTokens}}>
         {authUser !== true && <MainLayout/>}
-        {authUser === true && JSON.parse(sessionStorage.getItem('email')).userType === 'Merchant' && <MerchantLayout/>}
+        {authUser === true && JSON.parse(sessionStorage.getItem('email')).userType === 2 && <MerchantLayout/>}
       </AuthContext.Provider>
     </Fragment>
   );

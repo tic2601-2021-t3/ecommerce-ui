@@ -20,7 +20,7 @@ export const views = {
     component: Login, 
     appearAt: null,
     userAccess: [
-      'Merchant'
+      2
     ],
   },
   PRODUCTS: {
@@ -30,7 +30,7 @@ export const views = {
     component: Products, 
     appearAt: appear.HEADER,
     userAccess: [
-      'Merchant'
+      2
     ],
   },
   WOMEN: {
@@ -40,7 +40,7 @@ export const views = {
     component: null, 
     appearAt: appear.HEADER,
     userAccess: [
-      'User'
+      1
     ],
   },
   MEN: {
@@ -50,7 +50,7 @@ export const views = {
     component: null, 
     appearAt: appear.HEADER,
     userAccess: [
-      'User'
+      1
     ],
   },
   FOOD_AND_BEV: {
@@ -60,7 +60,7 @@ export const views = {
     component: null, 
     appearAt: appear.HEADER,
     userAccess: [
-      'User'
+      1
     ],
   },
   GARDEN: {
@@ -70,7 +70,7 @@ export const views = {
     component: null, 
     appearAt: appear.HEADER,
     userAccess: [
-      'User'
+      1
     ],
   },
   BOOKS_AND_COMICS: {
@@ -80,7 +80,7 @@ export const views = {
     component: null, 
     appearAt: appear.HEADER,
     userAccess: [
-      'User'
+      1
     ],
   },
   TECHNOLOGY: {
@@ -90,7 +90,7 @@ export const views = {
     component: null, 
     appearAt: appear.HEADER,
     userAccess: [
-      'User'
+      1
     ],
   },
   ADD_PRODUCT: {
@@ -100,7 +100,7 @@ export const views = {
     component: AddProduct, 
     appearAt: null,
     userAccess: [
-      'Merchant'
+      2
     ],
   },
   DASHBOARD: {
@@ -110,7 +110,7 @@ export const views = {
     component: Dashboard, 
     appearAt: null,
     userAccess: [
-      'Merchant'
+      2
     ],
   },
 };

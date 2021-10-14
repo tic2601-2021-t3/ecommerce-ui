@@ -23,7 +23,7 @@ const Register = ({location}) => {
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [userType, setUserType] = useState('');
+    const [userType, setUserType] = useState(2);
 
     const referer = (location && location.state && location.state.referer) || '/';
 
