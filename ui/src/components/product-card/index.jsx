@@ -5,22 +5,20 @@ import styles from './styles.module.scss';
 
 const Content = () => {
     return(
-        <div className={styles.contentGrid}> 
-            <Grid container>
-                <Grid item xs={3}> 
-                    <ProductCard/>
-                </Grid>
-                <Grid item xs={3}> 
-                    <ProductCard/>
-                </Grid>
-                <Grid item xs={3}> 
-                    <ProductCard/>
-                </Grid>
-                <Grid item xs={3}> 
-                    <ProductCard/>
-                </Grid>
+        <Grid container>
+            <Grid item xs={3}> 
+                <ProductCard/>
             </Grid>
-        </div>
+            <Grid item xs={3}> 
+                <ProductCard/>
+            </Grid>
+            <Grid item xs={3}> 
+                <ProductCard/>
+            </Grid>
+            <Grid item xs={3}> 
+                <ProductCard/>
+            </Grid>
+        </Grid>
     )
 };
 

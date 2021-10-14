@@ -6,7 +6,7 @@ import Content from "components/product-card";
 const Products = () => {
     return(
         <Grid container direction="column">
-            <Grid item> Product List Below</Grid>
+            <Grid item> banner here</Grid>
             <Grid item container> 
                 <Grid item xs={0} sm={1}/>{/* left side margins */}
                 <Grid item xs={12} sm={10}>
