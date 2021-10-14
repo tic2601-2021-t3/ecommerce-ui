@@ -1,0 +1,7 @@
+{
+    "FE_URL": "http://localhost",
+    "FE_PORT": "8080",
+    "PYTHON_URL": "http://localhost",
+    "PYTHON_PORT": "8448"
+}
+  
