@@ -7,3 +7,8 @@
 ### Step 2: Start nodejs
 1. 'yarn build'
 2. 'yarn server'
+
+
+### shortcuts
+## open vs code from terminal
+terminal > code . 
