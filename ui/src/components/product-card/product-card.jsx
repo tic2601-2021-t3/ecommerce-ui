@@ -6,6 +6,9 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+//var productId = windows.location.href;
+//const id = productId.substring(productId.indexOf('=')+1); // to get product id
+
 const ProductCard = () => {
   return(
     <Card sx={{ maxWidth: 345 }}>
@@ -25,8 +28,8 @@ const ProductCard = () => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small" href='/productId=1'>More</Button>
+        {/*<Button size="small" href='/productId={id}'>More</Button>*/}
       </CardActions>
     </Card>
   )
