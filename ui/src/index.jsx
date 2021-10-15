@@ -54,6 +54,22 @@ const theme = createTheme({
         },
       },
     },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          fontSize: '1rem',
+          textTransform: 'none',
+          fontFamily: 'inherit',
+          width: '50%',
+          selected: {
+            color: '#3975EA',
+          },
+          textColorPrimary: {
+            color: '#3975EA',
+          },
+        },
+      },
+    }
   },
   palette: {
     primary: {

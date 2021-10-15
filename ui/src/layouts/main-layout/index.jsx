@@ -8,7 +8,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 import {views, getHeader, appear} from 'common/permission';
 import Header from 'layouts/header';
-import Login from 'views/user';
+import Login from 'views/login';
 import ProductDetails from 'views/products/product-details';
 
 const MainLayout = () => {

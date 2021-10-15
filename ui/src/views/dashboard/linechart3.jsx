@@ -8,18 +8,18 @@ import HighchartsReact from 'highcharts-react-official';
 
 const colors = ['#1101ED']
 
-const LineChart = () => {
+const LineChart2 = () => {
     const getChartOpts = () => {
       return {
         title: {
-          text: 'Month-on-Month Sales for Past 3 Months',
+          text: 'Average Shipping Date',
           style: {
             fontFamily: 'Roboto Condensed',
           },
         },
         yAxis: {
           title: {
-            text: 'Sales'
+            text: 'Number of Hours'
           }
         },
         plotOptions: {
@@ -38,7 +38,7 @@ const LineChart = () => {
         },
         series: [{
           name: 'Month',
-          data: [1662.5, -38.65, 45.09],
+          data: [91.48, 46.91, 33.16],
           color: colors[0],
         }],
       };
@@ -53,4 +53,4 @@ const LineChart = () => {
     return <HighchartsReact options={getChartOpts()} highcharts={Highcharts} />;
 };
 
-export default LineChart;
+export default LineChart2;

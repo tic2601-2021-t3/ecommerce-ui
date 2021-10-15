@@ -4,7 +4,9 @@
 */
 
 import React, {useState} from 'react';
-import { styled, useTheme } from '@mui/material/styles';
+import {useAuthentication} from 'common/useAuthentication';
+
+import {styled, useTheme} from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -22,6 +24,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Dashboard from '@mui/icons-material/Dashboard';
 import Assignment from '@mui/icons-material/Assignment';
+import LogoutIcon from '@mui/icons-material/Logout';
 import Link from '@mui/material/Link';
 
 const drawerWidth = 240;
@@ -74,6 +77,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 const SideBar = () => {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+  const {authUser, setAuthTokens} = useAuthentication();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -82,6 +86,12 @@ const SideBar = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    setAuthTokens();
+    window.location.href = '/';
+  }
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -102,6 +112,12 @@ const SideBar = () => {
           </Typography>
           &nbsp;&nbsp;
           <h5>For Merchant</h5>
+          <IconButton
+            color="inherit"
+            onClick={handleLogout}
+          >
+            <LogoutIcon/>
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -127,7 +143,7 @@ const SideBar = () => {
           {['Dashboard', 'My Products'].map((text, index) => (
             <ListItem button key={text} 
               component={Link} 
-              href={(index % 2 === 0) ? '/dashboard' : '/add-product'}
+              href={(index % 2 === 0) ? '/dashboard' : '/'}
             >
               <ListItemIcon>
                 {index % 2 === 0 ? <Dashboard /> : <Assignment />}

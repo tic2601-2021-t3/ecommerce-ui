@@ -8,32 +8,34 @@ import HighchartsReact from 'highcharts-react-official';
 
 const colors = ['#1101ED'];
 
-const BarChart = () => {
+const BarChart2 = () => {
     const getChartOpts = () => {
       return {
         chart: {
             type: 'column'
         },
         title: {
-            text: 'Top 5 Product Sales by Revenue for Last Month',
+            text: 'Sales by Day of Week',
             style: {
                 fontFamily: 'Roboto Condensed',
             },
         },
         xAxis: {
             categories: [
-                'Google Pixel 5',
-                'Men Dior Underwear',
-                'Ribena',
-                'Thyme',
-                'Basil',
+                'Monday',
+                'Tuesday',
+                'Wednesday',
+                'Thursday',
+                'Friday',
+                'Saturday',
+                'Sunday',
             ],
             crosshair: true
         },
         yAxis: {
             min: 0,
             title: {
-                text: 'Sales'
+                text: 'Day of Week'
             }
         },
         tooltip: {
@@ -60,7 +62,7 @@ const BarChart = () => {
         },
         series: [{
             name: 'Sales',
-            data: [7200, 6400, 5500, 4000, 3900],
+            data: [7300, 12600, 15250, 8500, 6400, 9700, 12550],
             color: colors[0],
         }]};
     };
@@ -73,4 +75,4 @@ const BarChart = () => {
     return <HighchartsReact options={getChartOpts()} highcharts={Highcharts} />;
 };
 
-export default BarChart;
+export default BarChart2;

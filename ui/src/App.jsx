@@ -6,6 +6,7 @@
 import React, {Fragment, useState} from 'react';
 import MainLayout from 'layouts/main-layout';
 import MerchantLayout from 'layouts/merchant-layout';
+import AdminLayout from 'layouts/admin-layout';
 import {AuthContext} from 'common/useAuthentication';
 import _ from 'lodash';
 
@@ -31,8 +32,9 @@ const App = () => {
   return (
     <Fragment>
       <AuthContext.Provider value={{authUser, setAuthTokens: setTokens}}>
-        {authUser !== true && <MainLayout/>}
+        {(authUser !== true || (authUser === true && JSON.parse(sessionStorage.getItem('email')).userType === 3)) && <MainLayout/>}
         {authUser === true && JSON.parse(sessionStorage.getItem('email')).userType === 2 && <MerchantLayout/>}
+        {authUser === true && JSON.parse(sessionStorage.getItem('email')).userType === 1 && <AdminLayout/>}
       </AuthContext.Provider>
     </Fragment>
   );

@@ -38,3 +38,10 @@
     font-size: $font-xlarge;
     font-weight: 500;
 }
+
+.buttonWrapper {
+    > a {
+        display: flex;
+        justify-content: end;
+    }
+}

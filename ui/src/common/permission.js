@@ -4,10 +4,11 @@
 */
 
 import Products from 'views/products';
-import Login from 'views/user';
+import Login from 'views/login';
 import AddProduct from 'views/products/add-product';
 import Dashboard from 'views/dashboard';
 import ProductDetails from 'views/products/product-details';
+import UserManagement from 'views/user-management';
 
 export const appear = {
   HEADER: 'HEADER',
@@ -122,6 +123,16 @@ export const views = {
     appearAt: null,
     userAccess: [
       2
+    ],
+  },
+  USER_MANAGEMENT: {
+    key: 'USER_MANAGEMENT',
+    text: 'User Management',
+    link: '/user-management',
+    component: UserManagement, 
+    appearAt: null,
+    userAccess: [
+      1
     ],
   },
 };

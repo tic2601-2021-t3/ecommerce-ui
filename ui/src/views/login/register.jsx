@@ -25,8 +25,6 @@ const Register = ({location}) => {
     const [password, setPassword] = useState('');
     const [userType, setUserType] = useState(2);
 
-    const referer = (location && location.state && location.state.referer) || '/';
-
     const [{status, response}, makeRequest, {FETCHING, SUCCESS, ERROR}] = useRequest(API_URL.ADD_USER_URL, {
         verb: 'post',
         params: {
@@ -40,7 +38,7 @@ const Register = ({location}) => {
     const onUserNameChange = (e) => setUserName(e.target.value);
     const onPasswordChange = (e) => setPassword(e.target.value);
     const onEmailChange = (e) => setEmail(e.target.value);
-    const onUserTypeChange = (e) => setUserType(e.target.value);
+    const onUserTypeChange = (e) => setUserType(2);
     const onHandleRegister = () => makeRequest();
 
     useEffect(() => {
@@ -49,14 +47,16 @@ const Register = ({location}) => {
         }
     }, [status]);
 
-    const customErrorId = 'error1';
+    const customId = 'id1';
 
     if (status === SUCCESS && response.status === 0) {
-        return <Redirect to={referer} />;
+        toast.success(response.message, {
+            toastId: customId,
+        });
     }
     else if (status === SUCCESS && response.status === 1) {
         toast.error(response.message, {
-            toastId: customErrorId,
+            toastId: customId,
         });
     }
     

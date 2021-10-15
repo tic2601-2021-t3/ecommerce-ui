@@ -97,18 +97,6 @@ const AddProduct = () => {
                                             />
                                         </FormControl>
                                     </li>
-                                    <li>
-                                        <TextField
-                                            id="outlined-required"
-                                            label="Discount Rate"
-                                            placeholder="Eg, 20%"
-                                            value={productName}
-                                            onChange={onProductNameChange}
-                                            InputLabelProps={{
-                                                shrink: true,
-                                            }}
-                                        />
-                                    </li>
                                 </div>
                             </Col>
                             <Col md={6}>

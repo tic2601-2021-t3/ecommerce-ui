@@ -13,6 +13,7 @@ const useURL = () => {
     EDIT_PRODUCT_URL: `${domain}/product/editProduct`,
     PRODUCT_LIST_URL: `${domain}/product/getProductList`,
     PRODUCT_DETAIL_URL: `${domain}/product/getProduct`,
+    USER_LIST_URL: `${domain}/user/getUserList`,
   };
   return API_URL;
 }
