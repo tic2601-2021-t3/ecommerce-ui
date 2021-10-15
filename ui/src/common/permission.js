@@ -38,7 +38,7 @@ export const views = {
   PRODUCT_DETAILS: {
     key: 'PRODUCT_DETAILS',
     text: 'Product Details',
-    link: '/productId',
+    link: '/productId=1',
     component: ProductDetails, 
     appearAt: null,
     userAccess: [

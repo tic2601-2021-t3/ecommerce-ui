@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductCard from "components/product-card";
+import ProductCard from 'components/product-card';
 import Grid from '@mui/material/Grid';
 import styles from './styles.module.scss';
 import Button from '@mui/material/Button';
