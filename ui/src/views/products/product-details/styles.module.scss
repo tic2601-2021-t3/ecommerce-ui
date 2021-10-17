@@ -1,0 +1,26 @@
+@import 'common/font.scss';
+@import 'common/variable.scss';
+
+.standard {
+    font-family: $Open-Sans;
+    font-size: $font-large;
+    text-align: left;
+    font-weight: 500;
+    color: $primary-color;
+}
+
+p {
+    font-family: $Open-Sans;
+    font-size: $font-medium;
+    text-align: left;
+    font-weight: 500;
+    color: #ffd000;
+}
+
+h7 {
+    font-family: $Open-Sans;
+    font-size: $font-medium;
+    text-align: left;
+    font-weight: 500;
+    color: $primary-color;
+}
