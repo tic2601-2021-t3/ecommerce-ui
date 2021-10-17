@@ -6,50 +6,37 @@ import styles from './styles.module.scss';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 
+
 const ProductDetails = () => {
     return (
         <Container fluid>
             <Row align='center'>
-                <Col md={10} offset={{md: 2}} align='center'>
+                <Col md={12} offset={{md: 2}} align='center'>
                     <Card>
                         <img src="https://unsplash.com/photos/PZ57Npp7iAw"/>
                     </Card>
                 </Col>
             </Row>
+                <Col md={4}>Name of Product</Col> <Col md={1}> : </Col> <Col md={4}>Sunflower Shirt</Col> <Col md={3}> </Col>
+                <Col md={4}>Price</Col> <Col md={1}> : </Col> <Col md={4}>$12</Col> <Col md={3}> </Col>
+                <Col md={4}>Description</Col> <Col md={1}> : </Col> <Col md={4}>Sweat wicking material. Authentic!</Col> <Col md={3}> </Col>
+                
+                <Button 
+                    className={styles.btnWrapper}
+                    size="large" 
+                    variant="contained"
+                    //onClick={onHandleLogin}
+                    href="#">
+                    Buy
+                </Button>
 
-            <br></br> <br></br>
-
-            <Row align='center'>
-                <Col md={1} offset={{md: 2}} align='left'>Product</Col> <Col md={0.5}> : </Col> <Col md={8} align='left'>Sunflower Shirt</Col>
-                <Col md={1} offset={{md: 2}} align='left'>Price</Col> <Col md={0.5}> : </Col> <Col md={8}>$12</Col>
-                <Col md={1} offset={{md: 2}} align='left'>Description</Col> <Col md={0.5}> : </Col> <Col md={8}>Sweat wicking material. Authentic!</Col>
-                <Col md={1} offset={{md: 2}} align='left'>Merchant</Col> <Col md={0.5}> : </Col> <Col md={8}>Lululemon</Col> 
-                <Col md={1} offset={{md: 2}} align='left'>Stock left</Col> <Col md={0.5}> : </Col> <Col md={8}>216</Col> 
-            </Row>
-
-            <br></br> <br></br>
-
-            <Button 
-                className={styles.btnWrapper}
-                size="large" 
-                variant="contained"
-                align='right'
-                //onClick={onHandleLogin}
-                offset={{md: 2}}
-                href="#">
-                Buy
-            </Button>
-
-            <br></br> <br></br>
-
-            <Row align='center'>
-                <Col md={10} offset={{md: 2}}> <h2 className={styles.standard}> Product Reviews </h2> </Col> 
-                <Col md={1} offset={{md: 2}}> <h7>User12345</h7> </Col> <Col md={0.5}> rated </Col> <Col md={8}> <p>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</p> </Col> 
-                <Col md={1} offset={{md: 2}}> <h7>User12345</h7> </Col> <Col md={0.5}> rated </Col> <Col md={8}> <p>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</p> </Col> 
-                <Col md={1} offset={{md: 2}}> <h7>User12345</h7> </Col> <Col md={0.5}> rated </Col> <Col md={8}> <p>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</p> </Col> 
-                <Col md={1} offset={{md: 2}}> <h7>User12345</h7> </Col> <Col md={0.5}> rated </Col> <Col md={8}> <p>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</p> </Col> 
-                <Col md={1} offset={{md: 2}}> <h7>User12345</h7> </Col> <Col md={0.5}> rated </Col> <Col md={8}> <p>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</p> </Col> 
-                <Col md={1} offset={{md: 2}}> <h7>User12345</h7> </Col> <Col md={0.5}> rated </Col> <Col md={8}> <p>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</p> </Col> 
+                <Col md={4}>Merchant</Col> <Col md={1}> : </Col> <Col md={4}>Lululemon</Col> <Col md={3}> </Col>
+                <Col md={4}>Available Stock</Col> <Col md={1}> : </Col> <Col md={4}>216</Col> <Col md={3}> </Col>
+            <Row>
+                <Col md={12}>Product Reviews</Col> 
+                <Col md={4}>User1</Col> <Col md={1}> rated </Col> <Col md={7}>* * * * *</Col> 
+                <Col md={4}>User2</Col> <Col md={1}> rated </Col> <Col md={7}>* * * * *</Col> 
+                <Col md={4}>User3</Col> <Col md={1}> rated </Col> <Col md={7}>* * * * *</Col> 
             </Row>
         </Container>  
     )

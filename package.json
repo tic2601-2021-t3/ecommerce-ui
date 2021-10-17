@@ -22,7 +22,6 @@
     "ip": "^1.1.5",
     "lodash": "^4.17.15",
     "npm-watch": "^0.6.0",
-    "react-dropzone": "^11.4.2",
     "winston": "^3.2.1"
   },
   "devDependencies": {
