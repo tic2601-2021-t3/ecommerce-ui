@@ -20,36 +20,39 @@ const ProductDetails = () => {
             <br></br> <br></br>
 
             <Row align='center'>
-                <Col md={1} offset={{md: 2}} align='left'>Product</Col> <Col md={0.5}> : </Col> <Col md={8} align='left'>Sunflower Shirt</Col>
-                <Col md={1} offset={{md: 2}} align='left'>Price</Col> <Col md={0.5}> : </Col> <Col md={8}>$12</Col>
-                <Col md={1} offset={{md: 2}} align='left'>Description</Col> <Col md={0.5}> : </Col> <Col md={8}>Sweat wicking material. Authentic!</Col>
-                <Col md={1} offset={{md: 2}} align='left'>Merchant</Col> <Col md={0.5}> : </Col> <Col md={8}>Lululemon</Col> 
-                <Col md={1} offset={{md: 2}} align='left'>Stock left</Col> <Col md={0.5}> : </Col> <Col md={8}>216</Col> 
+                <Col md={1} offset={{md: 2}} align='left'> <p>Product</p> </Col> <Col md={0.5}> <p> : </p> </Col> <Col md={8} align='left'> <p>Sunflower Shirt</p> </Col>
+                <Col md={1} offset={{md: 2}} align='left'> <p>Price</p> </Col> <Col md={0.5}> <p> : </p> </Col> <Col md={8}> <p> $12 </p> </Col>
+                <Col md={1} offset={{md: 2}} align='left'> <p>Description</p> </Col> <Col md={0.5}> <p> : </p> </Col> <Col md={8}> <p>Sweat wicking material. Authentic!</p> </Col>
+                <Col md={1} offset={{md: 2}} align='left'> <p>Merchant</p> </Col> <Col md={0.5}> <p> : </p> </Col> <Col md={8}> <p>Lululemon</p> </Col> 
+                <Col md={1} offset={{md: 2}} align='left'> <p>Stock Left</p> </Col> <Col md={0.5}> <p> : </p> </Col> <Col md={8}> <p>216</p> </Col> 
+            </Row>
+
+            <br></br> <br></br>
+            <Row> 
+                <div align='right'> 
+                    <Button 
+                        className={styles.btnWrapper}
+                        size="large" 
+                        variant="contained"
+                        //onClick={onHandleLogin}
+                        offset={{md: 2}}
+                        href="#">
+                        Buy
+                    </Button>
+                </div>
             </Row>
 
             <br></br> <br></br>
 
-            <Button 
-                className={styles.btnWrapper}
-                size="large" 
-                variant="contained"
-                align='right'
-                //onClick={onHandleLogin}
-                offset={{md: 2}}
-                href="#">
-                Buy
-            </Button>
-
-            <br></br> <br></br>
-
             <Row align='center'>
-                <Col md={10} offset={{md: 2}}> <h2 className={styles.standard}> Product Reviews </h2> </Col> 
-                <Col md={1} offset={{md: 2}}> <h7>User12345</h7> </Col> <Col md={0.5}> rated </Col> <Col md={8}> <p>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</p> </Col> 
-                <Col md={1} offset={{md: 2}}> <h7>User12345</h7> </Col> <Col md={0.5}> rated </Col> <Col md={8}> <p>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</p> </Col> 
-                <Col md={1} offset={{md: 2}}> <h7>User12345</h7> </Col> <Col md={0.5}> rated </Col> <Col md={8}> <p>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</p> </Col> 
-                <Col md={1} offset={{md: 2}}> <h7>User12345</h7> </Col> <Col md={0.5}> rated </Col> <Col md={8}> <p>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</p> </Col> 
-                <Col md={1} offset={{md: 2}}> <h7>User12345</h7> </Col> <Col md={0.5}> rated </Col> <Col md={8}> <p>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</p> </Col> 
-                <Col md={1} offset={{md: 2}}> <h7>User12345</h7> </Col> <Col md={0.5}> rated </Col> <Col md={8}> <p>⭐️ ⭐️ ⭐️ ⭐️ ⭐️</p> </Col> 
+                <Col md={10} offset={{md: 2}}> <h2>Product Reviews</h2> </Col> 
+                <Col md={1} offset={{md: 2}}> <h7>User12345</h7> </Col> <Col md={0.5}> <p>rated</p> </Col> <Col md={8}> ⭐️ ⭐️ ⭐️ ⭐️ ⭐️</Col> 
+                <Col md={1} offset={{md: 2}}> <h7>User12345</h7> </Col> <Col md={0.5}> <p>rated</p> </Col> <Col md={8}> ⭐️ ⭐️ ⭐️ ⭐️ ⭐️</Col> 
+                <Col md={1} offset={{md: 2}}> <h7>User12345</h7> </Col> <Col md={0.5}> <p>rated</p> </Col> <Col md={8}> ⭐️ ⭐️</Col> 
+                <Col md={1} offset={{md: 2}}> <h7>User12345</h7> </Col> <Col md={0.5}> <p>rated</p> </Col> <Col md={8}> ⭐️ ⭐️ ⭐️ ⭐️ ⭐️</Col> 
+                <Col md={1} offset={{md: 2}}> <h7>User12345</h7> </Col> <Col md={0.5}> <p>rated</p> </Col> <Col md={8}> ⭐️ ⭐️ ⭐️ ⭐️</Col> 
+                <Col md={1} offset={{md: 2}}> <h7>User12345</h7> </Col> <Col md={0.5}> <p>rated</p> </Col> <Col md={8}> ⭐️ ⭐️ ⭐️ </Col> 
+
             </Row>
         </Container>  
     )

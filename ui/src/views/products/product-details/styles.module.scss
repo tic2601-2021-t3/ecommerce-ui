@@ -1,7 +1,7 @@
 @import 'common/font.scss';
 @import 'common/variable.scss';
 
-.standard {
+h2 {
     font-family: $Open-Sans;
     font-size: $font-large;
     text-align: left;
@@ -14,7 +14,7 @@ p {
     font-size: $font-medium;
     text-align: left;
     font-weight: 500;
-    color: #ffd000;
+    color: #727070;
 }
 
 h7 {
@@ -22,5 +22,5 @@ h7 {
     font-size: $font-medium;
     text-align: left;
     font-weight: 500;
-    color: $primary-color;
+    color: #ffd000;
 }
