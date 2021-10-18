@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {ToastContainer, toast} from 'react-toastify'
-import {Redirect} from 'react-router-dom';
-import {Container, Row, Col} from 'react-grid-system';
+import React, {useEffect} from 'react';
+import {toast} from 'react-toastify'
+import {Container} from 'react-grid-system';
 
 import useURL from 'common/urls';
 import useRequest from 'common/useRequest';
@@ -19,36 +18,33 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const UserManagement = () => {
     const API_URL = useURL();
-    // const {setAuthTokens} = useAuthentication();
+    const {setAuthTokens} = useAuthentication();
 
-    // const [{status, response}, makeRequest, {FETCHING, SUCCESS, ERROR}] = useRequest(API_URL.USER_LIST_URL, {
-    //     verb: 'get',
-    //     params: {
-    //         email: JSON.parse(sessionStorage.getItem('email')).email,
-    //         userType: JSON.parse(sessionStorage.getItem('email')).userType,
-    //     },
-    // });
+    const [{status, response}, makeRequest, {FETCHING, SUCCESS, ERROR}, source] = useRequest(API_URL.USER_LIST_URL, {
+        verb: 'post',
+        params: {
+            email: JSON.parse(sessionStorage.getItem('email')).email.toString(),
+            userType: parseInt(JSON.parse(sessionStorage.getItem('email')).userType),
+        },
+    });
 
-    // useEffect(() => {
-    //     if (status === ERROR) {
-    //         toast.error(response.message);
-    //     }
-    // }, [status]);
+    useEffect(() => {
+        makeRequest();
+        return () => {
+            source.cancel();
+        };
+    }, []);
 
-    // const customId = 'id1';
+    useEffect(() => {
+        if (status === ERROR) {
+            toast.error(response.message);
+        }
+    }, [status]);
 
-    // if (status === SUCCESS && response.status === 0) {
-    //     setAuthTokens(response);
-    //     toast.success(response.message, {
-    //         toastId: customId,
-    //     });
-    //     // return <Redirect to={referer} />;
-    // }
-    // else if (status === SUCCESS && response.status === 1) {
-    //     toast.error(response.message, {
-    //         toastId: customId,
-    //     });
-    // }
+    console.log(JSON.parse(sessionStorage.getItem('email')).email.toString());
+    console.log(parseInt(JSON.parse(sessionStorage.getItem('email')).userType));
+
+    console.log('hi', status === SUCCESS && response);
 
     return (
         <Container fluid>
@@ -57,31 +53,21 @@ const UserManagement = () => {
                     <TableHead>
                         <TableRow>
                             <TableCell>User ID</TableCell>
-                            <TableCell align="right">User Name</TableCell>
-                            <TableCell align="right">Email</TableCell>
-                            <TableCell align="right">User Type</TableCell>
+                            <TableCell>User Name</TableCell>
+                            <TableCell>Email</TableCell>
+                            <TableCell>User Type</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {/* {response.users.map((row) => ( */}
-                            <TableRow
-                            // key={row.userId}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                {/* <TableCell component="th" scope="row">
-                                    {row.userId}
-                                </TableCell>
-                                <TableCell align="right">{row.userName}</TableCell>
-                                <TableCell align="right">{row.email}</TableCell>
-                                <TableCell align="right">{row.userType}</TableCell> */}
-                                <TableCell component="th" scope="row">
-                                    1
-                                </TableCell>
-                                <TableCell align="right">rina</TableCell>
-                                <TableCell align="right">rina@test.com</TableCell>
-                                <TableCell align="right">Merchant</TableCell>
+                        {status === SUCCESS &&
+                            response.users.map((row) => (
+                            <TableRow key={row.user_id}>
+                                <TableCell>{row.user_id}</TableCell>
+                                <TableCell>{row.user_name}</TableCell>
+                                <TableCell>{row.email}</TableCell>
+                                <TableCell>{row.user_type}</TableCell>
                             </TableRow>
-                        {/* ))} */}
+                        ))}
                     </TableBody>
                 </Table>
             </TableContainer>

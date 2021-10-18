@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ProductCard from "./product-card";
 import Grid from '@mui/material/Grid';
-import styles from './styles.module.scss';
+// import styles from './styles.module.scss';
 
 const Content = () => {
     return(

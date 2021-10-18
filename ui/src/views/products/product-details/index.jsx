@@ -1,9 +1,5 @@
 import React from 'react';
 import {Container, Row, Col} from 'react-grid-system';
-import ProductCard from 'components/product-card';
-import Grid from '@mui/material/Grid';
-import styles from './styles.module.scss';
-import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 
 
@@ -16,15 +12,6 @@ const ProductDetails = () => {
                         <img src="https://unsplash.com/photos/PZ57Npp7iAw"/>
                     </Card>
                 </Col>
-                {/* <Col md={6}>
-                    <div>
-                        <Row>
-                            <Col>
-
-                            </Col>
-                        </Row>
-                    </div>
-                </Col> */}
             </Row>
             <Row>
             
