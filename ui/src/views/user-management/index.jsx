@@ -41,11 +41,6 @@ const UserManagement = () => {
         }
     }, [status]);
 
-    console.log(JSON.parse(sessionStorage.getItem('email')).email.toString());
-    console.log(parseInt(JSON.parse(sessionStorage.getItem('email')).userType));
-
-    console.log('hi', status === SUCCESS && response);
-
     return (
         <Container fluid>
             <TableContainer component={Paper}> 

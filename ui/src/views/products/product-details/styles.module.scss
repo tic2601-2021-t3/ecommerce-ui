@@ -1,0 +1,34 @@
+@import 'common/font.scss';
+@import 'common/variable.scss';
+
+.card {
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 25px;
+}
+
+.title {
+    font-family: $Roboto;
+    font-size: $font-title;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.category {
+    font-family: $Roboto;
+    font-size: $font-small;
+}
+
+.price {
+    font-family: $Roboto;
+    font-size: $font-xlarge;
+    font-weight: 500;
+    color: $primary-color;
+}
+
+.subTitle {
+    font-family: $Roboto;
+    font-size: $font-normal;
+    font-weight: 500;
+    margin-left: 20px
+}
