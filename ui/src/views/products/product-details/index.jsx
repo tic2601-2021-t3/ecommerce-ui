@@ -1,14 +1,15 @@
 import React from 'react';
 import {Container, Row, Col} from 'react-grid-system';
 import Card from '@mui/material/Card';
-import { Button } from '@mui/material';
+import {Button} from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import StarRateIcon from '@mui/icons-material/StarRate';
 
-import Logo from 'images/lightbluemap.png';
+import Product from 'images/product_10.jpeg';
 import styles from './styles.module.scss';
 
 const ProductDetails = () => {
@@ -19,7 +20,7 @@ const ProductDetails = () => {
                     <Card className={styles.card}>
                         <Row>
                             <Col md={6}>
-                                <img src={Logo}/>
+                                <img src={Product}/>
                             </Col>
                             <Col md={6} align='left'>
                                 <h3 className={styles.title}>Product A</h3>
@@ -43,23 +44,26 @@ const ProductDetails = () => {
                 <Col align='left'>
                     <Card className={styles.card}>
                         <h4 className={styles.subTitle}>Product Reviews</h4>
-                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                        <Table className={styles.subTitle} sx={{ minWidth: 650 }} aria-label="simple table">
                             <TableHead>
                                 <TableRow>
-                                    <TableCell>User ID</TableCell>
-                                    <TableCell>User Name</TableCell>
-                                    <TableCell>Email</TableCell>
-                                    <TableCell>User Type</TableCell>
+                                    <TableCell sx={{width: '50%'}}>User ID</TableCell>
+                                    <TableCell sx={{width: '50%'}}>Ratings</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 <TableRow 
                                     // key={row.user_id}
-                                    >
-                                    <TableCell>123</TableCell>
-                                    <TableCell>234</TableCell>
-                                    <TableCell>546</TableCell>
-                                    <TableCell>464</TableCell>
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell sx={{width: '50%'}}>123</TableCell>
+                                    <TableCell sx={{width: '50%'}}>
+                                        <StarRateIcon className={styles.button}/>
+                                        <StarRateIcon className={styles.button}/>
+                                        <StarRateIcon className={styles.button}/>
+                                        <StarRateIcon className={styles.button}/>
+                                        <StarRateIcon className={styles.button}/>
+                                    </TableCell>
                                 </TableRow>
                             </TableBody>
                         </Table>

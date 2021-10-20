@@ -30,7 +30,7 @@ const AddProduct = () => {
             <Row align='center'>
                 <Col align='center'>
                     <h2 className={styles.titleWrapper}>Add Product</h2>
-                    <Card className={styles.card}>
+                    <Card className={styles.cardWrapper}>
                         <Row>
                             <Col md={6}>
                                 <div className={styles.inputWrapper}>

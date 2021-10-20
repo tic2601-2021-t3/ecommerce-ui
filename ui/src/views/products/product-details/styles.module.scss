@@ -4,7 +4,7 @@
 .card {
     width: 80%;
     margin: 0 auto;
-    padding-bottom: 25px;
+    padding-bottom: 20px;
 }
 
 .title {
@@ -28,7 +28,12 @@
 
 .subTitle {
     font-family: $Roboto;
-    font-size: $font-normal;
+    font-size: $font-medium;
     font-weight: 500;
-    margin-left: 20px
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.button{
+    color: $primary-color;
 }

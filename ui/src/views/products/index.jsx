@@ -1,13 +1,20 @@
-import React, {useState} from 'react';
-import {Container, Row, Col} from 'react-grid-system';
-import Grid from '@mui/material/Grid';
-import Content from 'components/product-card';
-import Button from '@mui/material/Button';
-import {AuthContext} from 'common/useAuthentication';
+import React, {useState, useEffect} from 'react';
+import {Row, Col} from 'react-grid-system';
+import {toast} from 'react-toastify'
 
+import useURL from 'common/urls';
+import useRequest from 'common/useRequest';
+
+import Card from '@mui/material/Card';
+
+import Test from 'images/test.jpeg';
 import styles from './styles.module.scss';
 
+const url = window.location.href;
+const id = url.substring(url.indexOf('=')+1);
+
 const Products = () => {
+    const API_URL = useURL();
     const bytes =
     sessionStorage.getItem('email') &&
     sessionStorage.getItem('email') !== 'undefined';
@@ -15,23 +22,61 @@ const Products = () => {
     const curUser = bytes && JSON.parse(bytes);
     const [authUser] = useState(curUser);
 
+    const userId = 
+        (authUser === true && JSON.parse(sessionStorage.getItem('email')).userId === null) ? '' : (authUser === true && JSON.parse(sessionStorage.getItem('email')).userId);
+
+    const [{status, response}, makeRequest, {FETCHING, SUCCESS, ERROR}, source] = useRequest(API_URL.PRODUCT_LIST_URL, {
+        config: {
+            params: {
+                userId: userId,
+                searchTerm: '',
+                searchCategory: '',
+            },
+        }
+    });
+
+    useEffect(() => {
+        makeRequest();
+        return () => {
+            source.cancel();
+        };
+    }, []);
+
+    useEffect(() => {
+        if (status === ERROR) {
+            toast.error(response.message);
+        }
+    }, [status]);
+
+
     return(
-        <Grid container direction="column">
-            <Grid item>
-                {authUser === true && JSON.parse(sessionStorage.getItem('email')).userType === 2 && (
-                <div className={styles.buttonWrapper}>
-                    <Button href="/add-product">
-                        Add Product
-                    </Button>
-                </div>
-                )}
-            </Grid>
-            <Grid item xs={0} sm={1}/>{/* left side margins */}
-            <Grid item xs={12} sm={10}>
-                <Content/>
-            </Grid>
-            <Grid item xs={0} sm={1}/>{/* right side margins*/}
-        </Grid>
+        <div>
+            <Row>
+                <Col md={12}>
+                    <img className={styles.imageWrapper} src={Test}/>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <div className={styles.wrapper}>
+                        <h3>All Products</h3>
+                        <Row>
+                        {status === SUCCESS && response.products.map((row) => (
+                            <Col md={3}>
+                                <Card className={styles.productCard}>
+                                    <div>
+                                        <a className={styles.title} href={`/productId=${id}`}>{row.productName}</a>
+                                        <p>{row.productDesc}</p>
+                                        <h2 className={styles.price}>{row.productPrice}</h2>
+                                    </div>
+                                </Card>
+                            </Col>
+                        ))}
+                        </Row>
+                    </div>
+                </Col>
+            </Row> 
+        </div>
     )
 }
 

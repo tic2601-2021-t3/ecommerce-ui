@@ -47,20 +47,20 @@ const UserManagement = () => {
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>User ID</TableCell>
-                            <TableCell>User Name</TableCell>
-                            <TableCell>Email</TableCell>
-                            <TableCell>User Type</TableCell>
+                            <TableCell sx={{width: '25%'}}>User ID</TableCell>
+                            <TableCell sx={{width: '25%'}}>User Name</TableCell>
+                            <TableCell sx={{width: '25%'}}>Email</TableCell>
+                            <TableCell sx={{width: '25%'}}>User Type</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {status === SUCCESS &&
                             response.users.map((row) => (
                             <TableRow key={row.user_id}>
-                                <TableCell>{row.user_id}</TableCell>
-                                <TableCell>{row.user_name}</TableCell>
-                                <TableCell>{row.email}</TableCell>
-                                <TableCell>{row.user_type}</TableCell>
+                                <TableCell sx={{width: '25%'}}>{row.user_id}</TableCell>
+                                <TableCell sx={{width: '25%'}}>{row.user_name}</TableCell>
+                                <TableCell sx={{width: '25%'}}>{row.email}</TableCell>
+                                <TableCell sx={{width: '25%'}}>{row.user_type}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
