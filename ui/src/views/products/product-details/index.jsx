@@ -20,7 +20,7 @@ const ProductDetails = () => {
                     <Card className={styles.card}>
                         <Row>
                             <Col md={6}>
-                                <img src={Product}/>
+                                <img src={Product} alt='Product Item'/>
                             </Col>
                             <Col md={6} align='left'>
                                 <h3 className={styles.title}>Product A</h3>

@@ -6,15 +6,13 @@ import useURL from 'common/urls';
 import useRequest from 'common/useRequest';
 
 import Card from '@mui/material/Card';
-import Button from '@mui/material/Button';
 
-import Banner from 'images/banner.jpeg';
 import styles from './styles.module.scss';
 
 const url = window.location.href;
 const id = url.substring(url.indexOf('=')+1);
 
-const Products = () => {
+const Men = () => {
     const API_URL = useURL();
     const bytes =
     sessionStorage.getItem('email') &&
@@ -26,15 +24,12 @@ const Products = () => {
     const userId = 
         (authUser === true && JSON.parse(sessionStorage.getItem('email')).userId === null) ? '' : (authUser === true && JSON.parse(sessionStorage.getItem('email')).userId);
 
-    const userType = 
-        (authUser === true && JSON.parse(sessionStorage.getItem('email')).userType === null) ? '' : (authUser === true && JSON.parse(sessionStorage.getItem('email')).userType);
-
     const [{status, response}, makeRequest, {FETCHING, SUCCESS, ERROR}, source] = useRequest(API_URL.PRODUCT_LIST_URL, {
         config: {
             params: {
                 userId: userId,
                 searchTerm: '',
-                searchCategory: '',
+                searchCategory: 'Men',
             },
         }
     });
@@ -55,31 +50,10 @@ const Products = () => {
 
     return(
         <div>
-            {userType !== 1 && userType !== 2 && userType !== 3 && (
-                <Row>
-                    <Col md={12}>
-                        <img className={styles.imageWrapper} src={Banner} alt='banner'/>
-                    </Col>
-                </Row>
-            )}
             <Row>
                 <Col>
                     <div className={styles.wrapper}>
-                        {userType !== 1 && userType !== 2 && userType !== 3 && (
-                            <h3>All Products</h3>
-                        )}
-                        {userType === 2 && 
-                            <Row>
-                                <Col md={10}></Col>
-                                <Col md={2}>
-                                    <div className={styles.buttonWrapper}>
-                                        <Button href="/add-product">
-                                            Add Product
-                                        </Button>
-                                    </div>
-                                </Col>
-                            </Row>
-                        }
+                        <h3>All Products</h3>
                         <Row>
                         {status === SUCCESS && response.products.map((row) => (
                             <Col md={3}>
@@ -100,5 +74,5 @@ const Products = () => {
     )
 }
 
-export default Products;
+export default Men;
 
