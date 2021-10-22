@@ -6,9 +6,13 @@
 import Products from 'views/products';
 import Login from 'views/login';
 import AddProduct from 'views/products/add-product';
+import EditProduct from 'views/products/edit-product';
 import Dashboard from 'views/dashboard';
 import ProductDetails from 'views/products/product-details';
 import UserManagement from 'views/user-management';
+
+const url = window.location.href;
+const id = url.substring(url.indexOf('=') + 1);
 
 export const appear = {
   HEADER: 'HEADER',
@@ -21,9 +25,6 @@ export const views = {
     link: '/login',
     component: Login, 
     appearAt: null,
-    userAccess: [
-      2
-    ],
   },
   PRODUCTS: {
     key: 'PRODUCTS',
@@ -31,19 +32,13 @@ export const views = {
     link: '/',
     component: Products, 
     appearAt: appear.HEADER,
-    userAccess: [
-      2, 3
-    ],
   },
   PRODUCT_DETAILS: {
     key: 'PRODUCT_DETAILS',
     text: 'Product Details',
-    link: '/productId=1',
+    link: `/productId=${id}`,
     component: ProductDetails, 
     appearAt: null,
-    userAccess: [
-      2, 3
-    ],
   },
   WOMEN: {
     key: 'WOMEN',
@@ -51,9 +46,6 @@ export const views = {
     link: '/women',
     component: null, 
     appearAt: appear.HEADER,
-    userAccess: [
-      1
-    ],
   },
   MEN: {
     key: 'MEN',
@@ -61,9 +53,6 @@ export const views = {
     link: '/men',
     component: null, 
     appearAt: appear.HEADER,
-    userAccess: [
-      1
-    ],
   },
   FOOD_AND_BEV: {
     key: 'FOOD_AND_BEV',
@@ -71,9 +60,6 @@ export const views = {
     link: '/food-and-beverages',
     component: null, 
     appearAt: appear.HEADER,
-    userAccess: [
-      1
-    ],
   },
   GARDEN: {
     key: 'GARDEN',
@@ -81,9 +67,6 @@ export const views = {
     link: '/garden',
     component: null, 
     appearAt: appear.HEADER,
-    userAccess: [
-      1
-    ],
   },
   BOOKS_AND_COMICS: {
     key: 'BOOKS_AND_COMICS',
@@ -91,9 +74,6 @@ export const views = {
     link: '/books-and-comics',
     component: null, 
     appearAt: appear.HEADER,
-    userAccess: [
-      1
-    ],
   },
   TECHNOLOGY: {
     key: 'TECHNOLOGY',
@@ -101,9 +81,6 @@ export const views = {
     link: '/technology',
     component: null, 
     appearAt: appear.HEADER,
-    userAccess: [
-      1
-    ],
   },
   ADD_PRODUCT: {
     key: 'ADD_PRODUCT',
@@ -111,9 +88,13 @@ export const views = {
     link: '/add-product',
     component: AddProduct, 
     appearAt: null,
-    userAccess: [
-      2
-    ],
+  },
+  EDIT_PRODUCT: {
+    key: 'EDIT_PRODUCT',
+    text: 'Edit Product',
+    link: '/edit-product',
+    component: EditProduct, 
+    appearAt: null,
   },
   DASHBOARD: {
     key: 'DASHBOARD',
@@ -121,9 +102,6 @@ export const views = {
     link: '/dashboard',
     component: Dashboard, 
     appearAt: null,
-    userAccess: [
-      2
-    ],
   },
   USER_MANAGEMENT: {
     key: 'USER_MANAGEMENT',
@@ -131,9 +109,6 @@ export const views = {
     link: '/user-management',
     component: UserManagement, 
     appearAt: null,
-    userAccess: [
-      1
-    ],
   },
 };
 
@@ -145,7 +120,3 @@ export const getHeader = (location) => {
   });
   return headerItems;
 }
-
-export const getMerchant = (location) => {
-
-};

@@ -1,14 +1,21 @@
-### Step 1: Run REACT on local environment
-1. `npm install` (only applicable for running it first time)
-2. `npm install --global yarn'. If there is a permission error: `sudo npm install --global yarn'. Key in your password/key. (only applicable for running it first time)
-4. `yarn ui-install` (only applicable for running it first time)
-5. `yarn client-win`
+## Pre-requisites
+1. Install NodeJS https://nodejs.org/en/download/
+2. Install yarn `sudo npm install --global yarn`
 
-### Step 2: Start nodejs
-1. 'yarn build'
-2. 'yarn server'
+## Local Environment
+### Run UI on Development Mode
+1. `npm install`*
+2. `yarn ui-install`* 
+3. `yarn client-win`
+*Only require when running it for the first time
+### Start NodeJS
+1. `yarn build`
+2. `yarn server`
 
+## Deployment on Server
+1. `yarn build`
+2. `yarn deploy`
 
-### shortcuts
-#### open vs code from terminal
-terminal > code . 
+## Miscellaneous
+### Shortcut to open VSC on Terminal
+1. `terminal > code .`

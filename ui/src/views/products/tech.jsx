@@ -9,9 +9,6 @@ import Card from '@mui/material/Card';
 
 import styles from './styles.module.scss';
 
-const url = window.location.href;
-const id = url.substring(url.indexOf('=')+1);
-
 const Tech = () => {
     const API_URL = useURL();
     const bytes =
@@ -25,13 +22,12 @@ const Tech = () => {
         (authUser === true && JSON.parse(sessionStorage.getItem('email')).userId === null) ? '' : (authUser === true && JSON.parse(sessionStorage.getItem('email')).userId);
 
     const [{status, response}, makeRequest, {FETCHING, SUCCESS, ERROR}, source] = useRequest(API_URL.PRODUCT_LIST_URL, {
-        config: {
-            params: {
-                userId: userId,
-                searchTerm: '',
-                searchCategory: 'Technology',
-            },
-        }
+        verb: 'post',
+        params: {
+            userId: '',
+            searchTerm: '',
+            searchCategory: 'Technology',
+        },
     });
 
     useEffect(() => {
@@ -59,9 +55,9 @@ const Tech = () => {
                             <Col md={3}>
                                 <Card className={styles.productCard}>
                                     <div>
-                                        <a className={styles.title} href={`/productId=${id}`}>{row.productName}</a>
+                                        <a className={styles.title} href={`/productId=${row.productId}`}>{row.productName}</a>
                                         <p>{row.productDesc}</p>
-                                        <h2 className={styles.price}>{row.productPrice}</h2>
+                                        <h2 className={styles.price}>S${row.productPrice}</h2>
                                     </div>
                                 </Card>
                             </Col>

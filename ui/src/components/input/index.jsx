@@ -1,10 +1,10 @@
 export const OPTIONS_TYPE = {
   CATEGORY: [
-    { value: 'Women', label: 'Women' },
-    { value: 'Men', label: 'Men' },
-    { value: 'Sports', label: 'Sports' },
-    { value: 'Electronic', label: 'Electronic' },
-    { value: 'Groceries', label: 'Groceries' },
+    { value: 'Mens apparel', label: 'Mens apparel' },
+    { value: 'Food and Beverages', label: 'Food and Beverages' },
+    { value: 'Garden', label: 'Garden' },
+    { value: 'Books and Comics', label: 'Books and Comics' },
+    { value: 'Technology', label: 'Technology' },
   ],
   USER_TYPE: [
     { value: 1, label: 'Admin' },

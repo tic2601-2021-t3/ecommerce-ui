@@ -57,10 +57,10 @@ const UserManagement = () => {
                         {status === SUCCESS &&
                             response.users.map((row) => (
                             <TableRow key={row.user_id}>
-                                <TableCell sx={{width: '25%'}}>{row.user_id}</TableCell>
-                                <TableCell sx={{width: '25%'}}>{row.user_name}</TableCell>
+                                <TableCell sx={{width: '25%'}}>{row.userId}</TableCell>
+                                <TableCell sx={{width: '25%'}}>{row.userName}</TableCell>
                                 <TableCell sx={{width: '25%'}}>{row.email}</TableCell>
-                                <TableCell sx={{width: '25%'}}>{row.user_type}</TableCell>
+                                <TableCell sx={{width: '25%'}}>{row.userType}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
