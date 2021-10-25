@@ -83,17 +83,19 @@ const Products = () => {
                             <Col md={3}>
                                 <Card className={styles.productCard}>
                                     <div>
-                                        <img src={Product}/>
+                                        <img src={Product} alt='Product'/><br/>
                                         <a className={styles.title} href={`/productId=${row.productId}`}>{row.productName}</a>
                                         <p>{row.productDesc}</p>
                                         <h2 className={styles.price}>S${row.productPrice}</h2>
-                                        <Link to={{
-                                            pathname: '/edit-product',
-                                            state: {row}
-                                            }}
-                                        >
-                                            Edit Product
-                                        </Link>
+                                        {userType === 2 && (
+                                            <Link to={{
+                                                pathname: '/edit-product',
+                                                state: {row}
+                                                }}
+                                            >
+                                                Edit Product
+                                            </Link>
+                                        )}
                                         {/* <Button
                                             className={styles.buttonWrapper} 
                                             href='/edit-product'>

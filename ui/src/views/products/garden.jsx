@@ -7,6 +7,7 @@ import useRequest from 'common/useRequest';
 
 import Card from '@mui/material/Card';
 
+import GardenBanner from 'images/garden.png';
 import styles from './styles.module.scss';
 
 const Garden = () => {
@@ -20,6 +21,9 @@ const Garden = () => {
 
     const userId = 
         (authUser === true && JSON.parse(sessionStorage.getItem('email')).userId === null) ? '' : (authUser === true && JSON.parse(sessionStorage.getItem('email')).userId);
+
+    const userType = 
+        (authUser === true && JSON.parse(sessionStorage.getItem('email')).userType === null) ? '' : (authUser === true && JSON.parse(sessionStorage.getItem('email')).userType);
 
     const [{status, response}, makeRequest, {FETCHING, SUCCESS, ERROR}, source] = useRequest(API_URL.PRODUCT_LIST_URL, {
         verb: 'post',
@@ -46,10 +50,17 @@ const Garden = () => {
 
     return(
         <div>
+            {userType !== 1 && userType !== 2 && userType !== 3 && (
+                <Row>
+                    <Col md={12}>
+                        <img className={styles.categoryWrapper} src={GardenBanner} alt='banner'/>
+                    </Col>
+                </Row>
+            )}
             <Row>
                 <Col>
                     <div className={styles.wrapper}>
-                        <h3>All Products</h3>
+                        <br/>
                         <Row>
                         {status === SUCCESS && response.products.map((row) => (
                             <Col md={3}>
