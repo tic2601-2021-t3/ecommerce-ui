@@ -1,3 +1,8 @@
+/*
+  Author: Rina Chua
+  Date: 13 Oct 2021
+*/
+
 import React from 'react';
 import {useDropzone} from 'react-dropzone';
 import styles from './styles.module.scss';

@@ -1,3 +1,8 @@
+/*
+  Author: Rina Chua
+  Date: 21 Oct 2021
+*/
+
 import React, {useState, useEffect} from 'react';
 import {Row, Col} from 'react-grid-system';
 import {toast} from 'react-toastify'
@@ -66,8 +71,9 @@ const Garden = () => {
                             <Col md={3}>
                                 <Card className={styles.productCard}>
                                     <div>
+                                        <img className={styles.prodImage} src={row.productImage} alt='Product'/><br/>
                                         <a className={styles.title} href={`/productId=${row.productId}`}>{row.productName}</a>
-                                        <p>{row.productDesc}</p>
+                                        <p className={styles.desc}>{row.productDesc}</p>
                                         <h2 className={styles.price}>S${row.productPrice}</h2>
                                     </div>
                                 </Card>

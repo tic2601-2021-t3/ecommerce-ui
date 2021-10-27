@@ -1,3 +1,8 @@
+/*
+  Author: Rina Chua
+  Date: 15 Oct 2021
+*/
+
 import React, {Fragment, useEffect} from 'react';
 import {Container, Row, Col} from 'react-grid-system';
 import {toast} from 'react-toastify'
@@ -14,7 +19,6 @@ import StarRateIcon from '@mui/icons-material/StarRate';
 import useURL from 'common/urls';
 import useRequest from 'common/useRequest';
 
-import Product from 'images/product_10.jpeg';
 import styles from './styles.module.scss';
 
 const url = window.location.href;
@@ -49,26 +53,26 @@ const ProductDetails = () => {
                 <Col align='center'>
                     <Card className={styles.card}>
                         <Row>
+                        {status === SUCCESS && (
+                        <Fragment>
                             <Col md={6}>
-                                <img src={Product} alt='Product Item'/>
+                                <img src={response.product.productImage} alt='Product' />
                             </Col>
                             <Col md={6} align='left'>
-                            {status === SUCCESS && (
-                                <Fragment>
-                                    <h3 className={styles.title}>{response.product.productName}</h3>
-                                    <p className={styles.category}>Category: {response.product.productCategory} | Stock Available: {response.product.productQty}</p>
-                                    <p className={styles.category}>Merchant: {response.product.productCategory}</p>
-                                    <p>{response.product.productDesc}</p>
-                                    <h2 className={styles.price}>S${response.product.productPrice}</h2>
-                                    <Button
-                                        variant="contained"
-                                        size="large"
-                                    >
-                                        Add to Cart
-                                    </Button>
-                                </Fragment> 
-                            )}
+                                <h3 className={styles.title}>{response.product.productName}</h3>
+                                <p className={styles.category}>Category: {response.product.productCategory} | Stock Available: {response.product.productQty}</p>
+                                <p className={styles.category}>Merchant: {response.product.productCategory}</p>
+                                <p>{response.product.productDesc}</p>
+                                <h2 className={styles.price}>S${response.product.productPrice}</h2>
+                                <Button
+                                    variant="contained"
+                                    size="large"
+                                >
+                                    Add to Cart
+                                </Button>
                             </Col>
+                            </Fragment> 
+                        )}
                         </Row>
                     </Card>
                 </Col>

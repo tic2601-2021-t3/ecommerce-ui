@@ -1,3 +1,8 @@
+/*
+  Author: Rina Chua
+  Date: 14 Oct 2021
+*/
+
 import React, {useState, useEffect} from 'react';
 import {Row, Col} from 'react-grid-system';
 import {toast} from 'react-toastify';
@@ -10,7 +15,6 @@ import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
 
 import Banner from 'images/banner.jpeg';
-import Product from 'images/product_10.jpeg';
 import styles from './styles.module.scss';
 
 const Products = () => {
@@ -83,9 +87,9 @@ const Products = () => {
                             <Col md={3}>
                                 <Card className={styles.productCard}>
                                     <div>
-                                        <img src={Product} alt='Product'/><br/>
+                                        <img className={styles.prodImage} src={row.productImage} alt='Product'/><br/>
                                         <a className={styles.title} href={`/productId=${row.productId}`}>{row.productName}</a>
-                                        <p>{row.productDesc}</p>
+                                        <p className={styles.desc}>{row.productDesc}</p>
                                         <h2 className={styles.price}>S${row.productPrice}</h2>
                                         {userType === 2 && (
                                             <Link to={{

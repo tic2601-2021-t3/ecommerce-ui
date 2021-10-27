@@ -66,8 +66,9 @@ const Men = () => {
                             <Col md={3}>
                                 <Card className={styles.productCard}>
                                     <div>
+                                        <img className={styles.prodImage} src={row.productImage} alt='Product'/><br/>
                                         <a className={styles.title} href={`/productId=${row.productId}`}>{row.productName}</a>
-                                        <p>{row.productDesc}</p>
+                                        <p className={styles.desc}>{row.productDesc}</p>
                                         <h2 className={styles.price}>S${row.productPrice}</h2>
                                     </div>
                                 </Card>

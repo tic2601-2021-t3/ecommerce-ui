@@ -1,3 +1,8 @@
+/*
+  Author: Rina Chua
+  Date: 13 Oct 2021
+*/
+
 export const OPTIONS_TYPE = {
   CATEGORY: [
     { value: 'Mens apparel', label: 'Mens apparel' },
