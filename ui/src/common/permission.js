@@ -3,12 +3,21 @@
   Date: 24 Sep 2021
 */
 
-import Products from 'views/products';
 import Login from 'views/login';
+import Products from 'views/products';
+import Men from 'views/products/men';
+import Food from 'views/products/food';
+import Books from 'views/products/books';
+import Garden from 'views/products/garden';
+import Technology from 'views/products/tech';
 import AddProduct from 'views/products/add-product';
+import EditProduct from 'views/products/edit-product';
 import Dashboard from 'views/dashboard';
 import ProductDetails from 'views/products/product-details';
 import UserManagement from 'views/user-management';
+
+const url = window.location.href;
+const id = url.substring(url.indexOf('=') + 1);
 
 export const appear = {
   HEADER: 'HEADER',
@@ -21,9 +30,6 @@ export const views = {
     link: '/login',
     component: Login, 
     appearAt: null,
-    userAccess: [
-      2
-    ],
   },
   PRODUCTS: {
     key: 'PRODUCTS',
@@ -31,79 +37,48 @@ export const views = {
     link: '/',
     component: Products, 
     appearAt: appear.HEADER,
-    userAccess: [
-      2, 3
-    ],
   },
   PRODUCT_DETAILS: {
     key: 'PRODUCT_DETAILS',
     text: 'Product Details',
-    link: '/productId=1',
+    link: `/productId=${id}`,
     component: ProductDetails, 
     appearAt: null,
-    userAccess: [
-      2, 3
-    ],
-  },
-  WOMEN: {
-    key: 'WOMEN',
-    text: 'Women',
-    link: '/women',
-    component: null, 
-    appearAt: appear.HEADER,
-    userAccess: [
-      1
-    ],
   },
   MEN: {
     key: 'MEN',
     text: 'Men',
     link: '/men',
-    component: null, 
+    component: Men, 
     appearAt: appear.HEADER,
-    userAccess: [
-      1
-    ],
   },
   FOOD_AND_BEV: {
     key: 'FOOD_AND_BEV',
     text: 'Food & Beverages',
     link: '/food-and-beverages',
-    component: null, 
+    component: Food, 
     appearAt: appear.HEADER,
-    userAccess: [
-      1
-    ],
   },
   GARDEN: {
     key: 'GARDEN',
     text: 'Garden',
     link: '/garden',
-    component: null, 
+    component: Garden, 
     appearAt: appear.HEADER,
-    userAccess: [
-      1
-    ],
   },
   BOOKS_AND_COMICS: {
     key: 'BOOKS_AND_COMICS',
     text: 'Books & Comics',
     link: '/books-and-comics',
-    component: null, 
+    component: Books, 
     appearAt: appear.HEADER,
-    userAccess: [
-      1
-    ],
   },
   TECHNOLOGY: {
     key: 'TECHNOLOGY',
     text: 'Technology',
     link: '/technology',
-    component: null, 
+    component: Technology, 
     appearAt: appear.HEADER,
-    userAccess: [
-      1
-    ],
   },
   ADD_PRODUCT: {
     key: 'ADD_PRODUCT',
@@ -111,9 +86,13 @@ export const views = {
     link: '/add-product',
     component: AddProduct, 
     appearAt: null,
-    userAccess: [
-      2
-    ],
+  },
+  EDIT_PRODUCT: {
+    key: 'EDIT_PRODUCT',
+    text: 'Edit Product',
+    link: '/edit-product',
+    component: EditProduct, 
+    appearAt: null,
   },
   DASHBOARD: {
     key: 'DASHBOARD',
@@ -121,9 +100,6 @@ export const views = {
     link: '/dashboard',
     component: Dashboard, 
     appearAt: null,
-    userAccess: [
-      2
-    ],
   },
   USER_MANAGEMENT: {
     key: 'USER_MANAGEMENT',
@@ -131,9 +107,6 @@ export const views = {
     link: '/user-management',
     component: UserManagement, 
     appearAt: null,
-    userAccess: [
-      1
-    ],
   },
 };
 
@@ -145,7 +118,3 @@ export const getHeader = (location) => {
   });
   return headerItems;
 }
-
-export const getMerchant = (location) => {
-
-};

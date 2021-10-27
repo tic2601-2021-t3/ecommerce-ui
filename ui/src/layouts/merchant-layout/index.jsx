@@ -11,6 +11,7 @@ import SideBar from 'layouts/merchant-layout/sidebar';
 import Dashboard from 'views/dashboard';
 import Products from 'views/products';
 import AddProduct from 'views/products/add-product';
+import EditProduct from 'views/products/edit-product';
 
 const MerchantLayout = () => {
     // const headerMenu = getHeader(appear.HEADER);
@@ -23,6 +24,7 @@ const MerchantLayout = () => {
                     <Route exact path={views.DASHBOARD.link} component={Dashboard}/>
                     <Route exact path={views.PRODUCTS.link} component={Products}/>
                     <Route exact path={views.ADD_PRODUCT.link} component={AddProduct}/>
+                    <Route exact path={views.EDIT_PRODUCT.link} component={EditProduct}/>
                 </Switch>
             </BrowserRouter>
         </Fragment>

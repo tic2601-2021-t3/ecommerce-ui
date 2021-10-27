@@ -5,7 +5,8 @@
 
 import React, {useState, useEffect} from 'react';
 import {Container, Row, Col} from 'react-grid-system';
-import {ToastContainer, toast} from 'react-toastify'
+import {ToastContainer, toast} from 'react-toastify';
+import {useHistory} from 'react-router-dom';
 
 import Card from '@mui/material/Card';
 import {Button, TextField} from '@mui/material';
@@ -23,7 +24,7 @@ import ZoneUpload from 'components/zone-upload';
 
 import styles from './styles.module.scss';
 
-const AddProduct = () => {
+const EditProduct = () => {
     const [productName, setProductName] = useState();
     const [productDesc, setProductDesc] = useState();
     const [productCategory, setProductCategory] = useState();
@@ -37,47 +38,48 @@ const AddProduct = () => {
     const onProductPriceChange = (e) => setProductPrice(e.target.value);
     const onProductImageChange = (e) => setProductImage(e.target.value);
 
-    const onHandleAddProduct = () => makeRequest();
     const onHandleCancel = () => window.history.back();
 
-    const API_URL = useURL();
-    const [{ status, response }, makeRequest, { FETCHING, SUCCESS, ERROR }, source] = useRequest(API_URL.ADD_PRODUCT_URL, {
-        verb: 'post',
-        params: {
-            userId: JSON.parse(sessionStorage.getItem('email')).userId,
-            productName: productName, 
-            productDesc: productDesc, 
-            productCategory: productCategory, 
-            productQty: productQty, 
-            productPrice: productPrice,
-            productImage: '' 
-        },
-    });
+    // const onHandleAddProduct = () => makeRequest();
 
-    useEffect(() => {
-        if (status === ERROR) {
-            toast.error(response.message);
-        }
-    }, [status]);
+    // const API_URL = useURL();
+    // const [{ status, response }, makeRequest, { FETCHING, SUCCESS, ERROR }, source] = useRequest(API_URL.EDIT_PRODUCT_URL, {
+    //     verb: 'post',
+    //     params: {
+    //         userId: '', // JSON.parse(sessionStorage.getItem('email')).userId,
+    //         productName: productName, 
+    //         productDesc: productDesc, 
+    //         productCategory: productCategory, 
+    //         productQty: productQty, 
+    //         productPrice: productPrice,
+    //         productImage: '' 
+    //     },
+    // });
 
-    const customId = 'id1';
+    // useEffect(() => {
+    //     if (status === ERROR) {
+    //         toast.error(response.message);
+    //     }
+    // }, [status]);
 
-    if (status === SUCCESS && response.status === 0) {
-        toast.success(response.message, {
-            toastId: customId,
-        });
-    }
-    else if (status === SUCCESS && response.status === 1) {
-        toast.error(response.message, {
-            toastId: customId,
-        });
-    }
+    // const customId = 'id1';
+
+    // if (status === SUCCESS && response.status === 0) {
+    //     toast.success(response.message, {
+    //         toastId: customId,
+    //     });
+    // }
+    // else if (status === SUCCESS && response.status === 1) {
+    //     toast.error(response.message, {
+    //         toastId: customId,
+    //     });
+    // }
 
     return(
         <Container fluid>
             <Row align='center'>
                 <Col align='center'>
-                    <h2 className={styles.titleWrapper}>Add Product</h2>
+                    <h2 className={styles.titleWrapper}>Edit Product</h2>
                     <Card className={styles.cardWrapper}>
                         <Row>
                             <Col md={6}>
@@ -163,9 +165,9 @@ const AddProduct = () => {
                             <Col>
                                 <Button 
                                     variant="contained"
-                                    onClick={onHandleAddProduct}
+                                    // onClick={onHandleAddProduct}
                                 >
-                                    Add Product
+                                    Save
                                 </Button> &nbsp;
                                 <Button variant="text"
                                     onClick={onHandleCancel}
@@ -182,4 +184,4 @@ const AddProduct = () => {
     )
 }
 
-export default AddProduct;
+export default EditProduct;

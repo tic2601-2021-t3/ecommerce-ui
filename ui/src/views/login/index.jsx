@@ -31,7 +31,7 @@ const User = ({location}) => {
                     <h2 className={styles.topTitle}>
                         Top 1 Leading Ecommerce Platform
                     </h2>
-                    <img src={Logo} />
+                    <img src={Logo} alt='Login' />
                 </Col>
                 <Col align='center' md={6}>
                     <Card className={styles.card}>

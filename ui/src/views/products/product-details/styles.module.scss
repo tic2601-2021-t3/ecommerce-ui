@@ -1,0 +1,43 @@
+/*
+  Author: Rina Chua
+  Date: 15 Oct 2021
+*/
+
+@import 'common/font.scss';
+@import 'common/variable.scss';
+
+.card {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.title {
+    font-family: $Roboto;
+    font-size: $font-title;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.category {
+    font-family: $Roboto;
+    font-size: $font-small;
+}
+
+.price {
+    font-family: $Roboto;
+    font-size: $font-xlarge;
+    font-weight: 500;
+    color: $primary-color;
+}
+
+.subTitle {
+    font-family: $Roboto;
+    font-size: $font-medium;
+    font-weight: 500;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.button{
+    color: $primary-color;
+}

@@ -1,32 +1,30 @@
 /*
   Author: Rina Chua
-  Date: 14 Oct 2021
+  Date: 21 Oct 2021
 */
 
 import React, {useState, useEffect} from 'react';
 import {Row, Col} from 'react-grid-system';
-import {toast} from 'react-toastify';
-import {Link} from 'react-router-dom';
+import {toast} from 'react-toastify'
 
 import useURL from 'common/urls';
 import useRequest from 'common/useRequest';
 
 import Card from '@mui/material/Card';
-import Button from '@mui/material/Button';
 
-import Banner from 'images/banner.jpeg';
+import BooksBanner from 'images/books.png';
 import styles from './styles.module.scss';
 
-const Products = () => {
+const Books = () => {
     const API_URL = useURL();
     const bytes =
-        sessionStorage.getItem('email') &&
-        sessionStorage.getItem('email') !== 'undefined';
+    sessionStorage.getItem('email') &&
+    sessionStorage.getItem('email') !== 'undefined';
 
     const curUser = bytes && JSON.parse(bytes);
     const [authUser] = useState(curUser);
 
-    const userId =
+    const userId = 
         (authUser === true && JSON.parse(sessionStorage.getItem('email')).userId === null) ? '' : (authUser === true && JSON.parse(sessionStorage.getItem('email')).userId);
 
     const userType = 
@@ -37,7 +35,7 @@ const Products = () => {
         params: {
             userId: '',
             searchTerm: '',
-            searchCategory: '',
+            searchCategory: 'Books and Comics',
         },
     });
 
@@ -60,28 +58,14 @@ const Products = () => {
             {userType !== 1 && userType !== 2 && userType !== 3 && (
                 <Row>
                     <Col md={12}>
-                        <img className={styles.imageWrapper} src={Banner} alt='banner'/>
+                        <img className={styles.categoryWrapper} src={BooksBanner} alt='banner'/>
                     </Col>
                 </Row>
             )}
             <Row>
                 <Col>
                     <div className={styles.wrapper}>
-                        {userType !== 1 && userType !== 2 && userType !== 3 && (
-                            <h3>All Products</h3>
-                        )}
-                        {userType === 2 && 
-                            <Row>
-                                <Col md={10}></Col>
-                                <Col md={2}>
-                                    <div className={styles.buttonWrapper}>
-                                        <Button href='/add-product'>
-                                            Add Product
-                                        </Button>
-                                    </div>
-                                </Col>
-                            </Row>
-                        }
+                        <br/>
                         <Row>
                         {status === SUCCESS && response.products.map((row) => (
                             <Col md={3}>
@@ -91,20 +75,6 @@ const Products = () => {
                                         <a className={styles.title} href={`/productId=${row.productId}`}>{row.productName}</a>
                                         <p className={styles.desc}>{row.productDesc}</p>
                                         <h2 className={styles.price}>S${row.productPrice}</h2>
-                                        {userType === 2 && (
-                                            <Link to={{
-                                                pathname: '/edit-product',
-                                                state: {row}
-                                                }}
-                                            >
-                                                Edit Product
-                                            </Link>
-                                        )}
-                                        {/* <Button
-                                            className={styles.buttonWrapper} 
-                                            href='/edit-product'>
-                                            Edit Product
-                                        </Button> */}
                                     </div>
                                 </Card>
                             </Col>
@@ -117,5 +87,5 @@ const Products = () => {
     )
 }
 
-export default Products;
+export default Books;
 

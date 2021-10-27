@@ -26,6 +26,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Link from '@mui/material/Link';
 
+import styles from './styles.module.scss';
+
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -76,7 +78,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 const SideBar = () => {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
-  const {authUser, setAuthTokens} = useAuthentication();
+  const {setAuthTokens} = useAuthentication();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -111,12 +113,14 @@ const SideBar = () => {
           </Typography>
           &nbsp;&nbsp;
           <h5>For Admin</h5>
-          <IconButton
-            color="inherit"
-            onClick={handleLogout}
-          >
-            <LogoutIcon/>
-          </IconButton>
+          <div className={styles.logOutWrapper}>
+            <IconButton
+              color="inherit"
+              onClick={handleLogout}
+            >
+              <LogoutIcon/>
+            </IconButton>
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer

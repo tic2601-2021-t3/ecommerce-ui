@@ -3,7 +3,7 @@
   Date: 24 Sep 2021
 */
 
-const domain = 'http://localhost:8448';
+const domain = 'http://167.172.7.66:8448';
 
 const useURL = () => {
   const API_URL = {
