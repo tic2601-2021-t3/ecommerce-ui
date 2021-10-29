@@ -50,7 +50,7 @@ const AddProduct = () => {
             productCategory: productCategory, 
             productQty: productQty, 
             productPrice: productPrice,
-            productImage: '' 
+            productImage: productImage,
         },
     });
 
@@ -156,7 +156,9 @@ const AddProduct = () => {
                                 </div>
                             </Col>
                             <Col md={6}>
-                                <ZoneUpload/>
+                                <ZoneUpload 
+                                    onDrop={onProductImageChange}
+                                />
                             </Col>
                         </Row>
                         <Row>

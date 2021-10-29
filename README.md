@@ -7,6 +7,7 @@
 1. `npm install`*
 2. `yarn ui-install`* 
 3. `yarn client-win`
+<br/>
 *Only require when running it for the first time
 ### Start NodeJS
 1. `yarn build`

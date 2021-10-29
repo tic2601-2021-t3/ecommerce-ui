@@ -7,7 +7,7 @@ import useRequest from 'common/useRequest';
 
 import Card from '@mui/material/Card';
 
-import MenBanner from 'images/men.png';
+import MenBanner from 'images/category/men.png';
 import styles from './styles.module.scss';
 
 const Men = () => {

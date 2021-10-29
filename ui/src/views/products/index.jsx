@@ -10,11 +10,11 @@ import {Link} from 'react-router-dom';
 
 import useURL from 'common/urls';
 import useRequest from 'common/useRequest';
+import CarouselBanner from 'components/carousel';
 
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
 
-import Banner from 'images/banner.jpeg';
 import styles from './styles.module.scss';
 
 const Products = () => {
@@ -60,7 +60,9 @@ const Products = () => {
             {userType !== 1 && userType !== 2 && userType !== 3 && (
                 <Row>
                     <Col md={12}>
-                        <img className={styles.imageWrapper} src={Banner} alt='banner'/>
+                        <div className={styles.bannerWrapper}>
+                            <CarouselBanner/>
+                        </div>
                     </Col>
                 </Row>
             )}
@@ -68,7 +70,7 @@ const Products = () => {
                 <Col>
                     <div className={styles.wrapper}>
                         {userType !== 1 && userType !== 2 && userType !== 3 && (
-                            <h3>All Products</h3>
+                            <h3 className={styles.title}>All Products</h3>
                         )}
                         {userType === 2 && 
                             <Row>

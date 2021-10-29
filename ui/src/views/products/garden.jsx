@@ -12,7 +12,7 @@ import useRequest from 'common/useRequest';
 
 import Card from '@mui/material/Card';
 
-import GardenBanner from 'images/garden.png';
+import GardenBanner from 'images/category/garden.png';
 import styles from './styles.module.scss';
 
 const Garden = () => {

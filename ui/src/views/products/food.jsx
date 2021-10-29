@@ -12,7 +12,7 @@ import useRequest from 'common/useRequest';
 
 import Card from '@mui/material/Card';
 
-import FoodBanner from 'images/food.png';
+import FoodBanner from 'images/category/food.png';
 import styles from './styles.module.scss';
 
 const Food = () => {

@@ -12,7 +12,7 @@ import useRequest from 'common/useRequest';
 
 import Card from '@mui/material/Card';
 
-import BooksBanner from 'images/books.png';
+import BooksBanner from 'images/category/books.png';
 import styles from './styles.module.scss';
 
 const Books = () => {

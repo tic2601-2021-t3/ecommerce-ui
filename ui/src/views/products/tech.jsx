@@ -11,7 +11,7 @@ import useURL from 'common/urls';
 import useRequest from 'common/useRequest';
 
 import Card from '@mui/material/Card';
-import TechBanner from 'images/technology.png';
+import TechBanner from 'images/category/technology.png';
 
 import styles from './styles.module.scss';
 
