@@ -6,7 +6,8 @@
 import React, {useState, useEffect} from 'react';
 import {Container, Row, Col} from 'react-grid-system';
 import {ToastContainer, toast} from 'react-toastify';
-import {useHistory} from 'react-router-dom';
+import classNames from 'classnames';
+
 
 import Card from '@mui/material/Card';
 import {Button, TextField} from '@mui/material';
@@ -77,9 +78,13 @@ const EditProduct = () => {
 
     return(
         <Container fluid>
+            <Row>
+                <Col>
+                    <h3 className={classNames(styles.title, styles.wrapper)}>Edit Product</h3>
+                </Col>
+            </Row>
             <Row align='center'>
                 <Col align='center'>
-                    <h2 className={styles.titleWrapper}>Edit Product</h2>
                     <Card className={styles.cardWrapper}>
                         <Row>
                             <Col md={6}>

@@ -5,6 +5,8 @@
 
 import Login from 'views/login';
 import Products from 'views/products';
+import ProductDetails from 'views/products/product-details';
+import Cart from 'views/products/product-details/cart';
 import Men from 'views/products/men';
 import Food from 'views/products/food';
 import Books from 'views/products/books';
@@ -12,8 +14,8 @@ import Garden from 'views/products/garden';
 import Technology from 'views/products/tech';
 import AddProduct from 'views/products/add-product';
 import EditProduct from 'views/products/edit-product';
+import Orders from 'views/orders';
 import Dashboard from 'views/dashboard';
-import ProductDetails from 'views/products/product-details';
 import UserManagement from 'views/user-management';
 
 const url = window.location.href;
@@ -43,6 +45,13 @@ export const views = {
     text: 'Product Details',
     link: `/productId=${id}`,
     component: ProductDetails, 
+    appearAt: null,
+  },
+  CART: {
+    key: 'CART',
+    text: 'Cart',
+    link: `/cart`,
+    component: Cart, 
     appearAt: null,
   },
   MEN: {
@@ -92,6 +101,13 @@ export const views = {
     text: 'Edit Product',
     link: '/edit-product',
     component: EditProduct, 
+    appearAt: null,
+  },
+  ORDERS: {
+    key: 'ORDERS',
+    text: 'Orders',
+    link: `/orders`,
+    component: Orders, 
     appearAt: null,
   },
   DASHBOARD: {

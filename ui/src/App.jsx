@@ -4,11 +4,13 @@
 */
 
 import React, {Fragment, useState} from 'react';
+import _ from 'lodash';
+
+import {AuthContext} from 'common/useAuthentication';
+
 import MainLayout from 'layouts/main-layout';
 import MerchantLayout from 'layouts/merchant-layout';
 import AdminLayout from 'layouts/admin-layout';
-import {AuthContext} from 'common/useAuthentication';
-import _ from 'lodash';
 
 import './App.module.scss';
 

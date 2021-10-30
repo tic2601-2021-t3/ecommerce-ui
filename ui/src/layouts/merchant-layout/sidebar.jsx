@@ -113,7 +113,7 @@ const SideBar = () => {
             Huat Ah Ecommerce Platform
           </Typography>
           &nbsp;&nbsp;
-          <h5>For Merchant</h5>
+          <span>For Merchant</span>
           <div className={styles.logOutWrapper}>
             <IconButton
               color="inherit"

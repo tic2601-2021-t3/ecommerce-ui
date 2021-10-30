@@ -3,7 +3,7 @@
   Date: 19 Oct 2021
 */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify'
 import {Container, Row, Col} from 'react-grid-system';
 
@@ -18,12 +18,27 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
+import Popover from '@mui/material/Popover';
 
 import 'react-toastify/dist/ReactToastify.css';
+import styles from './styles.module.scss';
 
 const UserManagement = () => {
     const API_URL = useURL();
     const { setAuthTokens } = useAuthentication();
+    const [open, setOpen] = useState(null);
+
+    const handleClick = (e) => {
+        setOpen(e.currentTarget);
+    };
+  
+    const handleClose = () => {
+        setOpen(null);
+    };
+  
+    const openFlag = Boolean(open);
+    const id = openFlag ? 'simple-popover' : undefined;
 
     const [{ status, response }, makeRequest, { FETCHING, SUCCESS, ERROR }, source] = useRequest(API_URL.USER_LIST_URL, {
         verb: 'post',
@@ -49,7 +64,24 @@ const UserManagement = () => {
     return (
         <Container fluid>
             <Row>
-                <Col>
+                <Col md={12}>
+                    <div className={styles.buttonWrapper}>
+                        <Button onClick={handleClick}>
+                            Add User
+                        </Button>
+                        <Popover
+                            id={id}
+                            open={openFlag}
+                            anchorEl={open}
+                            onClose={handleClose}
+                            anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                            }}
+                        >
+                            
+                        </Popover>
+                    </div>
                 </Col>
             </Row>
             <Row>

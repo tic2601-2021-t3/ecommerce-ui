@@ -8,8 +8,11 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 import {views, getHeader, appear} from 'common/permission';
 import Header from 'layouts/header';
+
 import Login from 'views/login';
 import ProductDetails from 'views/products/product-details';
+import Cart from 'views/products/product-details/cart';
+import Orders from 'views/orders';
 
 const MainLayout = () => {
     const headerMenu = getHeader(appear.HEADER);
@@ -24,6 +27,8 @@ const MainLayout = () => {
                     ))}
                     <Route exact path={views.LOGIN.link} component={Login}/>
                     <Route exact path={views.PRODUCT_DETAILS.link} component={ProductDetails}/>
+                    <Route exact path={views.CART.link} component={Cart}/>
+                    <Route exact path={views.ORDERS.link} component={Orders}/>
                 </Switch>
             </BrowserRouter>
         </Fragment>

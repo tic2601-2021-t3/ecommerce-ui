@@ -11,18 +11,19 @@
     margin: 0 auto;
 }
 
+.title {
+    font-family: $Roboto;
+    font-size: $font-title;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: black;
+    text-decoration: none;
+}
+
 .cardWrapper {
     width: 80%;
     margin: 0 auto;
     padding: 20px 0;
-}
-
-.productCard {
-    margin-bottom: 20px;
-    height: 380px;
-    >div{
-        margin: 20px 20px;
-    }
 }
 
 .inputWrapper{
@@ -33,16 +34,6 @@
             width: 80%;
         }
     }
-}
-
-.titleWrapper {
-    width: 80%;
-    margin-top: 0px;
-    margin-bottom: 10px;
-    text-align: start;
-    font-family: $Open-Sans;
-    font-size: $font-xlarge;
-    font-weight: 500;
 }
 
 .buttonWrapper {
@@ -64,15 +55,6 @@
     margin-top: -35px;
 }
 
-.title {
-    font-family: $Roboto;
-    font-size: $font-title;
-    font-weight: 500;
-    margin-bottom: 5px;
-    color: black;
-    text-decoration: none;
-}
-
 .category {
     font-family: $Roboto;
     font-size: $font-small;
@@ -83,13 +65,4 @@
     font-size: $font-title;
     font-weight: 500;
     color: $primary-color;
-}
-
-.desc {
-    font-size: $font-small;
-    margin-top: 5px;
-}
-
-.prodImage {
-    width: 100%;
 }

@@ -112,7 +112,7 @@ const SideBar = () => {
             Huat Ah Ecommerce Platform
           </Typography>
           &nbsp;&nbsp;
-          <h5>For Admin</h5>
+          <span>For Admin</span>
           <div className={styles.logOutWrapper}>
             <IconButton
               color="inherit"

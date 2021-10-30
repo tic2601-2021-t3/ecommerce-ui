@@ -1,0 +1,26 @@
+/*
+  Author: Rina Chua
+  Date: 31 Oct 2021
+*/
+
+@import 'common/font.scss';
+@import 'common/variable.scss';
+
+.inputWrapper {
+    display: inline-block;
+    >li {
+        display: inline-block;
+        margin: 0;
+        border: 1px solid $border-color;
+    }
+}
+
+.textInputWrapper{
+    width: 40px;
+    text-align: center;
+    border: none;
+}
+
+.buttonWrapper{
+    border: none;
+}

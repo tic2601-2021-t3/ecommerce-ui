@@ -1,0 +1,37 @@
+/*
+  Author: Rina Chua
+  Date: 31 Oct 2021
+*/
+
+@import 'common/font.scss';
+@import 'common/variable.scss';
+
+
+.wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.title {
+    font-family: $Roboto;
+    font-size: $font-title;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: black;
+    text-decoration: none;
+}
+
+.cardWrapper {
+    width: 80%;
+    margin: 0 auto;
+    >table {
+        width: 95%;
+    }
+}
+
+.tableWrapper {
+    font-family: $Roboto;
+    font-size: $font-medium;
+    font-weight: 500;
+    margin: 0 auto 10px auto;
+}

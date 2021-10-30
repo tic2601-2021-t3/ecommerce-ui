@@ -6,7 +6,7 @@
 @import 'common/font.scss';
 @import 'common/variable.scss';
 
-.card {
+.wrapper {
     width: 80%;
     margin: 0 auto;
 }
@@ -15,30 +15,122 @@
     font-family: $Roboto;
     font-size: $font-title;
     font-weight: 500;
+    margin-bottom: 5px;
+    color: black;
+    text-decoration: none;
+}
+
+.cardWrapper {
+    width: 80%;
+    margin: 0 auto;
+    >table {
+        width: 95%;
+    }
+}
+
+.productName {
+    font-family: $Roboto;
+    font-size: $font-title;
+    font-weight: 500;
     margin-top: 25px;
     margin-bottom: 5px;
-}
-
-.category {
-    font-family: $Roboto;
-    font-size: $font-small;
-}
-
-.price {
-    font-family: $Roboto;
-    font-size: $font-xlarge;
-    font-weight: 500;
-    color: $primary-color;
 }
 
 .subTitle {
     font-family: $Roboto;
     font-size: $font-medium;
     font-weight: 500;
-    margin-left: 20px;
-    margin-bottom: 10px;
+    margin: 20px 0 0 20px;
 }
 
-.button{
+.tableWrapper {
+    font-family: $Roboto;
+    font-size: $font-medium;
+    font-weight: 500;
+    margin: 0 auto 10px auto;
+}
+
+
+.buttonWrapper {
+    font-family: $Roboto;
+    font-size: $font-medium;
+    font-weight: 500;
+    margin: 30px 0 30px 0;
+
+    >li {
+        display: inline-flex;
+    }
+}
+
+.button {
+    color: $rating-color;
+}
+
+.totalPrice {
+    font-family: $Roboto;
+    font-size: $font-large;
+}
+
+.productImage{
+    width: 100%;
+    height: 500px;
+}
+
+.checkoutImage {
+    height: 80px;
+    width: 80px;
+}
+
+.continueButton{
+    float: left;
+}
+
+.checkoutButton{
+    >button{
+        margin-right: 200px;
+        width: 250px;
+    }
+}
+
+.inputWrapper{
+    >li{
+        display: block;
+        margin: 20px 0;
+        >span{
+            font-family: $Roboto;
+        }
+    }
+}
+
+.label {
+    color: $grey-color;
+    display: inline-block;
+    vertical-align: top;
+    width: 25%;
+}
+
+.value {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+}
+
+
+.categoryLabel {
+    font-family: $Roboto;
+    font-size: $font-small;
+    color: $grey-color;
+}
+
+.categoryValue {
+    font-family: $Roboto;
+    font-size: $font-small;
+}
+
+.priceValue {
+    font-family: $Roboto;
+    font-size: $font-xlarge;
+    font-weight: 500;
     color: $primary-color;
+    margin-top: 5px;
 }

@@ -5,7 +5,6 @@
 
 import React, {useState, useEffect} from 'react';
 import {ToastContainer, toast} from 'react-toastify'
-import {Redirect} from 'react-router-dom';
 
 import useURL from 'common/urls';
 import useRequest from 'common/useRequest';
@@ -23,7 +22,7 @@ const Register = ({location}) => {
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [userType, setUserType] = useState(2);
+    const [userType, setUserType] = useState(1);
 
     const [{status, response}, makeRequest, {FETCHING, SUCCESS, ERROR}] = useRequest(API_URL.ADD_USER_URL, {
         verb: 'post',
@@ -38,7 +37,13 @@ const Register = ({location}) => {
     const onUserNameChange = (e) => setUserName(e.target.value);
     const onPasswordChange = (e) => setPassword(e.target.value);
     const onEmailChange = (e) => setEmail(e.target.value);
-    const onUserTypeChange = (e) => setUserType(2);
+    const onUserTypeChange = (e) => {
+        setUserType(1
+        //     {
+        //   2: e.target.checked,
+        // }
+        );
+    };
     const onHandleRegister = () => makeRequest();
 
     useEffect(() => {
@@ -99,9 +104,8 @@ const Register = ({location}) => {
             </li>
             <li>
                 <FormControlLabel 
-                    control={<Checkbox />} 
+                    control={<Checkbox onChange={onUserTypeChange} />} 
                     label="Register as Merchant" 
-                    onChange={onUserTypeChange}
                 />
             </li>
             <li>

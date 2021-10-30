@@ -9,8 +9,7 @@ import {toast} from 'react-toastify'
 
 import useURL from 'common/urls';
 import useRequest from 'common/useRequest';
-
-import Card from '@mui/material/Card';
+import ProductCard from 'components/product-card';
 
 import GardenBanner from 'images/category/garden.png';
 import styles from './styles.module.scss';
@@ -23,21 +22,43 @@ const Garden = () => {
 
     const curUser = bytes && JSON.parse(bytes);
     const [authUser] = useState(curUser);
+    const [user, setUser] = useState('');
+    const [type, setType] = useState('');
 
-    const userId = 
-        (authUser === true && JSON.parse(sessionStorage.getItem('email')).userId === null) ? '' : (authUser === true && JSON.parse(sessionStorage.getItem('email')).userId);
-
-    const userType = 
-        (authUser === true && JSON.parse(sessionStorage.getItem('email')).userType === null) ? '' : (authUser === true && JSON.parse(sessionStorage.getItem('email')).userType);
+    const userId = () => {
+        if (authUser === true) {
+            if (JSON.parse(sessionStorage.getItem('email')).userId === null || JSON.parse(sessionStorage.getItem('email')).userId === undefined)
+                setUser('');
+            else
+                setUser(JSON.parse(sessionStorage.getItem('email')).userId)
+        } else 
+            setUser('');
+    }
+    
+    const userType = () => {
+        if (authUser === true) {
+            if (JSON.parse(sessionStorage.getItem('email')).type === null || JSON.parse(sessionStorage.getItem('email')).type === undefined)
+                setType('');
+            else
+                setType(JSON.parse(sessionStorage.getItem('email')).type)
+        } else 
+            setType('');
+    }
 
     const [{status, response}, makeRequest, {FETCHING, SUCCESS, ERROR}, source] = useRequest(API_URL.PRODUCT_LIST_URL, {
         verb: 'post',
         params: {
-            userId: '',
+            userId: user,
             searchTerm: '',
             searchCategory: 'Garden',
         },
     });
+
+    useEffect(() => {
+        userId();
+        userType();
+    }, []);
+
 
     useEffect(() => {
         makeRequest();
@@ -55,7 +76,7 @@ const Garden = () => {
 
     return(
         <div>
-            {userType !== 1 && userType !== 2 && userType !== 3 && (
+            {type !== 1 && type !== 2 && type !== 3 && (
                 <Row>
                     <Col md={12}>
                         <img className={styles.categoryWrapper} src={GardenBanner} alt='banner'/>
@@ -69,14 +90,13 @@ const Garden = () => {
                         <Row>
                         {status === SUCCESS && response.products.map((row) => (
                             <Col md={3}>
-                                <Card className={styles.productCard}>
-                                    <div>
-                                        <img className={styles.prodImage} src={row.productImage} alt='Product'/><br/>
-                                        <a className={styles.title} href={`/productId=${row.productId}`}>{row.productName}</a>
-                                        <p className={styles.desc}>{row.productDesc}</p>
-                                        <h2 className={styles.price}>S${row.productPrice}</h2>
-                                    </div>
-                                </Card>
+                                <ProductCard
+                                    id={row.productId}
+                                    image={row.productImage}
+                                    name={row.productName}
+                                    desc={row.productDesc}
+                                    price={row.productPrice}
+                                />
                             </Col>
                         ))}
                         </Row>
