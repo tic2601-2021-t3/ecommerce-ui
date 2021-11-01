@@ -3,8 +3,8 @@
   Date: 19 Oct 2021
 */
 
-import React, { useEffect, useState } from 'react';
-import { toast } from 'react-toastify'
+import React, {useEffect, useState} from 'react';
+import {toast} from 'react-toastify'
 import {Container, Row, Col} from 'react-grid-system';
 
 import useURL from 'common/urls';
@@ -26,7 +26,7 @@ import styles from './styles.module.scss';
 
 const UserManagement = () => {
     const API_URL = useURL();
-    const { setAuthTokens } = useAuthentication();
+    const {setAuthTokens} = useAuthentication();
     const [open, setOpen] = useState(null);
 
     const handleClick = (e) => {

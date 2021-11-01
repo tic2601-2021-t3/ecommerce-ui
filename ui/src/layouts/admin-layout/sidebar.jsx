@@ -109,7 +109,7 @@ const SideBar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Huat Ah Ecommerce Platform
+            Huat Ah! Marketplace
           </Typography>
           &nbsp;&nbsp;
           <span>For Admin</span>

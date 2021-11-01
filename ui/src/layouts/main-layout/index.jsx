@@ -12,7 +12,9 @@ import Header from 'layouts/header';
 import Login from 'views/login';
 import ProductDetails from 'views/products/product-details';
 import Cart from 'views/products/product-details/cart';
+import Checkout from 'views/products/product-details/checkout';
 import Orders from 'views/orders';
+import OrderDetails from 'views/orders/order-details';
 
 const MainLayout = () => {
     const headerMenu = getHeader(appear.HEADER);
@@ -28,7 +30,9 @@ const MainLayout = () => {
                     <Route exact path={views.LOGIN.link} component={Login}/>
                     <Route exact path={views.PRODUCT_DETAILS.link} component={ProductDetails}/>
                     <Route exact path={views.CART.link} component={Cart}/>
+                    <Route exact path={views.CHECKOUT.link} component={Checkout}/>
                     <Route exact path={views.ORDERS.link} component={Orders}/>
+                    <Route exact path={views.ORDER_DETAILS.link} component={OrderDetails}/>
                 </Switch>
             </BrowserRouter>
         </Fragment>

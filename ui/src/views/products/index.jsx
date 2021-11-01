@@ -54,7 +54,7 @@ const Products = () => {
             searchCategory: '',
         },
     });
-
+    
     useEffect(() => {
         userId();
         userType();
@@ -72,8 +72,6 @@ const Products = () => {
             toast.error(response.message);
         }
     }, [status]);
-
-    console.log(user);
 
     return(
         <div>

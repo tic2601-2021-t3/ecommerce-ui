@@ -5,8 +5,9 @@
 
 import React, {Fragment, useState, useEffect} from 'react';
 import {Container, Row, Col} from 'react-grid-system';
-import {toast} from 'react-toastify'
+import {ToastContainer, toast} from 'react-toastify'
 import classNames from 'classnames';
+import _ from 'lodash';
 
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
@@ -18,6 +19,7 @@ import TableRow from '@mui/material/TableRow';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import QtyField from 'components/qty-field';
 
+import {CartContext, useCart} from 'common/useCart';
 import useURL from 'common/urls';
 import useRequest from 'common/useRequest';
 
@@ -27,16 +29,17 @@ const url = window.location.href;
 const id = url.substring(url.indexOf('=') + 1);
 
 const ProductDetails = () => {
-    const [itemQty, setItemQty] = useState(1);
-    
     const API_URL = useURL();
-    const bytes =
-    sessionStorage.getItem('email') &&
-    sessionStorage.getItem('email') !== 'undefined';
+    const [itemQty, setItemQty] = useState(1);
 
+    // Login Storage
+    const bytes =
+        sessionStorage.getItem('email') &&
+        sessionStorage.getItem('email') !== 'undefined';
     const curUser = bytes && JSON.parse(bytes);
     const [authUser] = useState(curUser);
 
+    // API for Product Details
     const [{ status, response }, makeRequest, { FETCHING, SUCCESS, ERROR }, source] = useRequest(API_URL.PRODUCT_DETAIL_URL, {
         verb: 'post',
         params: {
@@ -58,6 +61,28 @@ const ProductDetails = () => {
         }
     }, [status]);
 
+
+
+    const {setCart} = useCart();
+    const customId = 'id1';
+    const onAddCartClick = () => {
+        if (authUser === true && JSON.parse(sessionStorage.getItem('email')).userType === 3) {
+            const cartProduct = {
+                'productImage': response.product.productImage,
+                'productName': response.product.productName,
+                'productId': response.product.productId, 
+                'productQuantity': 1,
+                'productPrice': response.product.productPrice
+            };
+            setCart(cartProduct);
+            toast.success('Item has been added to the cart.', {
+                toastId: customId,
+            });
+        } else {
+            window.location.href = '/login';
+        }
+    }
+
     return (
         <Container fluid>
             <Row align='center'>
@@ -75,7 +100,7 @@ const ProductDetails = () => {
                                     <span className={styles.categoryLabel}>Category: </span>
                                     <span className={styles.categoryValue}>{response.product.productCategory}</span>
                                     <span className={styles.categoryLabel}>{' '}| Merchant: </span>
-                                    <span className={styles.categoryValue}>{response.product.productCategory}</span>
+                                    <span className={styles.categoryValue}>{response.product.userName}</span><br/>
                                     <label className={classNames(styles.priceValue, styles.value)}>S${response.product.productPrice}</label>
                                     <li>
                                         <span className={styles.label}>Description: </span>
@@ -93,10 +118,11 @@ const ProductDetails = () => {
                                         <Button
                                             variant="contained"
                                             size="large"
-                                            href={authUser === true && JSON.parse(sessionStorage.getItem('email')).userType === 3 ? '/cart' : '/login'}
+                                            onClick={onAddCartClick}
                                         >
                                             Add to Cart
                                         </Button>
+                                        <ToastContainer/>
                                     </li>
                                 </div>
                             </Col>

@@ -3,7 +3,7 @@
   Date: 24 Sep 2021
 */
 
-import React, {Fragment, useEffect, useState} from 'react';
+import React, {Fragment, useState} from 'react';
 import {useAuthentication} from 'common/useAuthentication';
 
 import TextField from '@mui/material/TextField';
@@ -34,7 +34,7 @@ const Header = () => {
     return (
         <Fragment>
             <div className={styles.wrapper}>
-                <h2 className={styles.title}>Huat Ah Ecommerce Platform</h2>
+                <h2 className={styles.title}>Huat Ah! Marketplace</h2>
                 <div className={styles.inputWrapper}>
                     <li>
                         <TextField

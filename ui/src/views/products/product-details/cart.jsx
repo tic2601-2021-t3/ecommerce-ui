@@ -3,9 +3,12 @@
   Date: 30 Oct 2021
 */
 
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Container, Row, Col} from 'react-grid-system';
 import classNames from 'classnames';
+
+import useURL from 'common/urls';
+import useRequest from 'common/useRequest';
 
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
@@ -17,37 +20,50 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow'
 
-import Product from 'images/product_16.jpeg';
 import styles from './styles.module.scss';
 
 const Cart = () => {
+    const API_URL = useURL();
+    const [cartItems] = useState(localStorage.getItem('cartItem'));
+    const cartItemsList = JSON.parse(cartItems);
     const shippingFee = 3.90;
 
     const ccyFormat = (num) => {
         return `${num.toFixed(2)}`;
     }
 
-    const priceRow = (qty, unit) => {
-        return qty * unit;
+    const subtotal = () => {
+        var sum = 0;
+        for (var i = 0; i < cartItemsList.length; i++) {
+            sum += parseFloat(cartItemsList[i].productPrice);
+        }
+        return sum;
     }
 
-    const createRow = (desc, qty, unit) => {
-        const price = priceRow(qty, unit);
-        return { desc, qty, unit, price };
+    const cartOrderItems = () => {
+        var cartProduct = [];
+        for (var i = 0; i < cartItemsList.length; ++i) {
+            cartProduct.push({
+                'productId': cartItemsList[i].productId, 
+                'productQuantity': 1,
+                'productPrice': cartItemsList[i].productPrice
+            });
+        }
+        return cartProduct;
     }
 
-    const subtotal = (items) => {
-        return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
-    }
+    const orderSubtotal = subtotal();
+    const orderTotal = shippingFee + orderSubtotal;
+    const orderItems = cartOrderItems();
 
-    const rows = [
-        createRow('Paperclips (Box)', 100, 1.15),
-        createRow('Paper (Case)', 10, 45.99),
-        createRow('Waste Basket', 2, 17.99),
-    ];
-
-    const invoiceSubtotal = subtotal(rows);
-    const invoiceTotal = shippingFee + invoiceSubtotal;
+    // API for add transaction
+    // const [{ status, response }, makeRequest, { FETCHING, SUCCESS, ERROR }, source] = useRequest(API_URL.ADD_TRANSACTION_URL, {
+    //     verb: 'post',
+    //     params: {
+    //         userId: JSON.parse(sessionStorage.getItem('email')).userId,
+    //         orderItems: orderItems,
+    //     },
+    // });
 
     return (
         <Container fluid>
@@ -69,47 +85,29 @@ const Cart = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                <TableRow 
-                                    // key={row.user_id}
-                                >
-                                    <TableCell sx={{width: '30%'}}>
-                                        <img className={styles.checkoutImage} src={Product} alt='Product'/>&nbsp;&nbsp;
-                                        <label>product a</label>
-                                    </TableCell>
-                                    <TableCell sx={{width: '30%'}}>2</TableCell>
-                                    <TableCell sx={{width: '30%'}}>S$
-                                        123
-                                    </TableCell>
-                                    <TableCell sx={{width: '10%'}} align='right'>
-                                        <Button>
-                                            <IconButton aria-label="profile" size="small">
-                                                <ClearIcon size={25} />
-                                            </IconButton>
-                                        </Button>
-                                    </TableCell>
-                                </TableRow>
-                                <TableRow 
-                                    // key={row.user_id}
-                                >
-                                    <TableCell sx={{width: '30%'}}>
-                                        <label>product a</label>
-                                    </TableCell>
-                                    <TableCell sx={{width: '30%'}}>1</TableCell>
-                                    <TableCell sx={{width: '30%'}}>S$
-                                        123
-                                    </TableCell>
-                                    <TableCell sx={{width: '10%'}} align='right'>
-                                        <Button>
-                                            <IconButton aria-label="profile" size="small">
-                                                <ClearIcon size={25} />
-                                            </IconButton>
-                                        </Button>
-                                    </TableCell>
-                                </TableRow>
+                                {cartItemsList.map((row) => (
+                                    <TableRow 
+                                        key={row.productId}
+                                    >
+                                        <TableCell sx={{width: '30%'}}>
+                                            <img className={styles.checkoutImage} src={row.productImage} alt='Product'/>&nbsp;&nbsp;
+                                            <label>{row.productName}</label>
+                                        </TableCell>
+                                        <TableCell sx={{width: '30%'}}>1</TableCell>
+                                        <TableCell sx={{width: '30%'}}>S${row.productPrice}</TableCell>
+                                        <TableCell sx={{width: '10%'}} align='right'>
+                                            <Button>
+                                                <IconButton aria-label="profile" size="small">
+                                                    <ClearIcon size={25} />
+                                                </IconButton>
+                                            </Button>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
                                 <TableRow align='right'>
                                     <TableCell rowSpan={3} />
                                     <TableCell colSpan={2}>Subtotal</TableCell>
-                                    <TableCell align="right">S${ccyFormat(invoiceSubtotal)}</TableCell>
+                                    <TableCell align="right">S${ccyFormat(orderSubtotal)}</TableCell>
                                 </TableRow>
                                 <TableRow>
                                     <TableCell colSpan={2}>Shipping Fee</TableCell>
@@ -117,7 +115,7 @@ const Cart = () => {
                                 </TableRow>
                                 <TableRow>
                                     <TableCell colSpan={2}><b>Total</b></TableCell>
-                                    <TableCell align="right"><label className={styles.totalPrice}>S${ccyFormat(invoiceTotal)}</label></TableCell>
+                                    <TableCell align="right"><label className={styles.totalPrice}>S${ccyFormat(orderTotal)}</label></TableCell>
                                 </TableRow>
                             </TableBody>
                         </Table>
@@ -126,7 +124,7 @@ const Cart = () => {
                                 <Button href='/'>{'<'} Continue Shopping</Button>
                             </li>
                             <li className={styles.checkoutButton}>
-                                <Button variant='contained'>Check Out</Button>
+                                <Button variant='contained' href='/checkout'>Check Out</Button>
                             </li>
                         </div>
                     </Card>

@@ -13,6 +13,9 @@ const useURL = () => {
     EDIT_PRODUCT_URL: `${domain}/product/editProduct`,
     PRODUCT_LIST_URL: `${domain}/product/getProductList`,
     PRODUCT_DETAIL_URL: `${domain}/product/getProduct`,
+    TRANSACTION_LIST_URL: `${domain}/transaction/getTransactionList`,
+    TRANSACTION_DETAIL_URL: `${domain}/transaction/getTransaction`,
+    ADD_TRANSACTION_URL: `${domain}/transaction/addTransaction`,
     USER_LIST_URL: `${domain}/user/getUserList`,
   };
   return API_URL;

@@ -7,6 +7,7 @@ import Login from 'views/login';
 import Products from 'views/products';
 import ProductDetails from 'views/products/product-details';
 import Cart from 'views/products/product-details/cart';
+import Checkout from 'views/products/product-details/cart';
 import Men from 'views/products/men';
 import Food from 'views/products/food';
 import Books from 'views/products/books';
@@ -15,6 +16,7 @@ import Technology from 'views/products/tech';
 import AddProduct from 'views/products/add-product';
 import EditProduct from 'views/products/edit-product';
 import Orders from 'views/orders';
+import OrderDetails from 'views/orders/order-details';
 import Dashboard from 'views/dashboard';
 import UserManagement from 'views/user-management';
 
@@ -52,6 +54,13 @@ export const views = {
     text: 'Cart',
     link: `/cart`,
     component: Cart, 
+    appearAt: null,
+  },
+  CHECKOUT: {
+    key: 'CHECKOUT',
+    text: 'Check Out',
+    link: `/checkout`,
+    component: Checkout, 
     appearAt: null,
   },
   MEN: {
@@ -108,6 +117,13 @@ export const views = {
     text: 'Orders',
     link: `/orders`,
     component: Orders, 
+    appearAt: null,
+  },
+  ORDER_DETAILS: {
+    key: 'ORDER_DETAILS',
+    text: 'Order Details',
+    link: `/orders/orderId=${id}`,
+    component: OrderDetails, 
     appearAt: null,
   },
   DASHBOARD: {
