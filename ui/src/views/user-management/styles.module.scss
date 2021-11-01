@@ -13,3 +13,18 @@
         float: right;
     }
 }
+
+.inputWrapper{
+  margin: 0 10px;
+  >li {
+      display: block;
+      margin: 20px auto;
+      >div{
+          width: 100%;
+      }
+  }
+}
+
+.btnWrapper {
+  width: 100%;
+}

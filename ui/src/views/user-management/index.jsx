@@ -4,12 +4,11 @@
 */
 
 import React, {useEffect, useState} from 'react';
-import {toast} from 'react-toastify'
+import {ToastContainer, toast} from 'react-toastify'
 import {Container, Row, Col} from 'react-grid-system';
 
 import useURL from 'common/urls';
 import useRequest from 'common/useRequest';
-import {useAuthentication} from 'common/useAuthentication';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -21,12 +20,13 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Popover from '@mui/material/Popover';
 
+import AddUser from './add-user';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './styles.module.scss';
 
+
 const UserManagement = () => {
     const API_URL = useURL();
-    const {setAuthTokens} = useAuthentication();
     const [open, setOpen] = useState(null);
 
     const handleClick = (e) => {
@@ -40,7 +40,7 @@ const UserManagement = () => {
     const openFlag = Boolean(open);
     const id = openFlag ? 'simple-popover' : undefined;
 
-    const [{ status, response }, makeRequest, { FETCHING, SUCCESS, ERROR }, source] = useRequest(API_URL.USER_LIST_URL, {
+    const [{status, response}, makeRequest, {FETCHING, SUCCESS, ERROR}, source] = useRequest(API_URL.USER_LIST_URL, {
         verb: 'post',
         params: {
             email: JSON.parse(sessionStorage.getItem('email')).email.toString(),
@@ -53,12 +53,14 @@ const UserManagement = () => {
         return () => {
             source.cancel();
         };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
         if (status === ERROR) {
             toast.error(response.message);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [status]);
 
     return (
@@ -79,7 +81,9 @@ const UserManagement = () => {
                             horizontal: 'left',
                             }}
                         >
-                            
+                            <AddUser
+                                onClose={handleClose}
+                            />
                         </Popover>
                     </div>
                 </Col>

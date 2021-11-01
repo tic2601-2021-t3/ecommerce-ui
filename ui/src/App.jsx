@@ -56,7 +56,7 @@ const App = () => {
       localStorage.setItem('cartItem', JSON.stringify(cartItems));
     }
   };
-  // localStorage.clear();
+  localStorage.clear();
   console.log('localstorage: ', localStorage.getItem('cartItem'));
   
   return (

@@ -19,7 +19,7 @@ import TableRow from '@mui/material/TableRow';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import QtyField from 'components/qty-field';
 
-import {CartContext, useCart} from 'common/useCart';
+import {useCart} from 'common/useCart';
 import useURL from 'common/urls';
 import useRequest from 'common/useRequest';
 
@@ -60,8 +60,6 @@ const ProductDetails = () => {
             toast.error(response.message);
         }
     }, [status]);
-
-
 
     const {setCart} = useCart();
     const customId = 'id1';
@@ -114,16 +112,18 @@ const ProductDetails = () => {
                                         /> &nbsp;&nbsp;
                                         <label className={styles.categoryValue}>{response.product.productQty} pieces available</label>
                                     </li>
-                                    <li>
-                                        <Button
-                                            variant="contained"
-                                            size="large"
-                                            onClick={onAddCartClick}
-                                        >
-                                            Add to Cart
-                                        </Button>
-                                        <ToastContainer/>
-                                    </li>
+                                    {/* {authUser === true && (sessionStorage.getItem('email').userType !== 1 || sessionStorage.getItem('email').userType !== 2) && ( */}
+                                        <li>
+                                            <Button
+                                                variant="contained"
+                                                size="large"
+                                                onClick={onAddCartClick}
+                                            >
+                                                Add to Cart
+                                            </Button>
+                                            <ToastContainer/>
+                                        </li>
+                                    {/* )} */}
                                 </div>
                             </Col>
                             </Fragment> 
