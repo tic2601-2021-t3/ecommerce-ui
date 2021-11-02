@@ -3,7 +3,7 @@
   Date: 25 Sep 2021
 */
 
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {Container, Row, Col} from 'react-grid-system';
 import {ToastContainer, toast} from 'react-toastify'
 import classNames from 'classnames';
@@ -30,16 +30,31 @@ const AddProduct = () => {
     const [productCategory, setProductCategory] = useState();
     const [productQty, setProductQty] = useState();
     const [productPrice, setProductPrice] = useState();
-    const [productImage, setProductImage] = useState();
+    const [imageBase, setImageBase] = useState();
     const onProductNameChange = (e) => setProductName(e.target.value);
     const onProductDescChange = (e) => setProductDesc(e.target.value);
     const onProductCategoryChange = (e) => setProductCategory(e.target.value);
     const onProductQtyChange = (e) => setProductQty(e.target.value);
     const onProductPriceChange = (e) => setProductPrice(e.target.value);
-    const onProductImageChange = (e) => setProductImage(e.target.value);
-
-    const onHandleAddProduct = () => makeRequest();
+    const onHandleAddProduct = () => { 
+        makeRequest();
+        setTimeout(function(){window.location.href='/';}, 3000);
+    };
     const onHandleCancel = () => window.history.back();
+
+    // Image Upload
+    const onDrop = useCallback((acceptedFiles) => {
+        acceptedFiles.forEach((file) => {
+          const reader = new FileReader();
+          reader.onabort = () => console.log('Process of file has been aborted');
+          reader.onerror = () => console.log('Process of reading file is failed');
+          reader.onload = () => {
+            setImageBase(reader.result);
+            return imageBase;
+          }
+          reader.readAsDataURL(file)
+        })
+    }, []);
 
     const API_URL = useURL();
     const [{ status, response }, makeRequest, { FETCHING, SUCCESS, ERROR }, source] = useRequest(API_URL.ADD_PRODUCT_URL, {
@@ -51,7 +66,7 @@ const AddProduct = () => {
             productCategory: productCategory, 
             productQty: productQty, 
             productPrice: productPrice,
-            productImage: productImage,
+            productImage: imageBase,
         },
     });
 
@@ -161,8 +176,9 @@ const AddProduct = () => {
                                 </div>
                             </Col>
                             <Col md={6}>
-                                <ZoneUpload 
-                                    onDrop={onProductImageChange}
+                                <ZoneUpload
+                                    image={imageBase}
+                                    onDrop={onDrop}
                                 />
                             </Col>
                         </Row>
