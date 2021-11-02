@@ -77,8 +77,8 @@ const UserManagement = () => {
                             anchorEl={open}
                             onClose={handleClose}
                             anchorOrigin={{
-                            vertical: 'bottom',
-                            horizontal: 'left',
+                                vertical: 'bottom',
+                                horizontal: 'left',
                             }}
                         >
                             <AddUser

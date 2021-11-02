@@ -53,3 +53,12 @@
     min-width: 350px;
     width: 350px;
 }
+
+.radioWrapper {
+    display: inline-block;
+    >label {
+        font-family: $Roboto;
+        font-size: $font-medium;
+        color: black;
+    }
+}

@@ -48,14 +48,19 @@ const AddUser = ({onClose}) => {
 
     const customId = 'id1';
     if (status === SUCCESS && response.status === 0) {
-        toast.success(response.message, {
-            toastId: customId,
-        });
+        toast.success(response.message, 
+            {
+                toastId: customId,
+            }
+        );
+        setTimeout(function(){onClose();}, 5000);
     }
     else if (status === SUCCESS && response.status === 1) {
-        toast.error(response.message, {
-            toastId: customId,
-        });
+        toast.error(response.message,
+            {
+                toastId: customId,
+            }
+        );
     }
 
     return (
