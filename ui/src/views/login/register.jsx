@@ -28,7 +28,7 @@ const Register = ({location}) => {
     const [password, setPassword] = useState('');
     const [userType, setUserType] = useState(3);
 
-    const [{status, response}, makeRequest, {FETCHING, SUCCESS, ERROR}] = useRequest(API_URL.ADD_USER_URL, {
+    const [{status, response}, makeRequest, {SUCCESS, ERROR}] = useRequest(API_URL.ADD_USER_URL, {
         verb: 'post',
         params: {
             userName: userName,

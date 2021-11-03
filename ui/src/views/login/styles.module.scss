@@ -8,6 +8,7 @@
 
 .card {
     width: 80%;
+    max-width: 1280px;
     margin: 0 auto;
 }
 
@@ -58,7 +59,7 @@
     display: inline-block;
     >label {
         font-family: $Roboto;
-        font-size: $font-medium;
+        font-size: $font-normal;
         color: black;
     }
 }

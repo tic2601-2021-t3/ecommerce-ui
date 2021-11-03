@@ -14,7 +14,7 @@ import Books from 'views/products/books';
 import Garden from 'views/products/garden';
 import Technology from 'views/products/tech';
 import AddProduct from 'views/products/add-product';
-import EditProduct from 'views/products/edit-product';
+import EditProduct from 'views/products/product-details/edit-product';
 import Orders from 'views/orders';
 import OrderDetails from 'views/orders/order-details';
 import Dashboard from 'views/dashboard';

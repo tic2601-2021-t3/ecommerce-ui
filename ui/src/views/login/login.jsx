@@ -23,9 +23,7 @@ const Login = ({location}) => {
     const [password, setPassword] = useState('');
     const {setAuthTokens} = useAuthentication();
 
-    const referer = (location && location.state && location.state.referer) || '/';
-
-    const [{status, response}, makeRequest, {FETCHING, SUCCESS, ERROR}] = useRequest(API_URL.LOGIN_URL, {
+    const [{status, response}, makeRequest, {SUCCESS, ERROR}] = useRequest(API_URL.LOGIN_URL, {
         verb: 'post',
         params: {
             email: email,
@@ -43,13 +41,12 @@ const Login = ({location}) => {
     }, [status]);
 
     const customId = 'id1';
-
     if (status === SUCCESS && response.status === 0) {
         setAuthTokens(response);
         toast.success(response.message, {
             toastId: customId,
         });
-        return <Redirect to={referer} />;
+        return <Redirect to={response.userType === 1 ? '/user-management' : response.userType === 2 ? '/dashboard' : '/'} />;
     }
     else if (status === SUCCESS && response.status === 1) {
         toast.error(response.message, {
@@ -58,44 +55,44 @@ const Login = ({location}) => {
     }
 
     return (
-    <div>
-        <h2 className={styles.title}>
-            Login to your Account
-        </h2>
-        <li>
-            <TextField
-                required
-                id="standard-required"
-                label="Enter Email"
-                variant="standard"
-                value={email}
-                onChange={onEmailChange}
-            />
-        </li>
-        <li>
-            <TextField
-                required
-                id="standard-password"
-                label="Enter Password"
-                type="password"
-                autoComplete="current-password"
-                variant="standard"
-                value={password}
-                onChange={onPasswordChange}
-            />
-        </li>
-        <li>
-            <Button 
-                className={styles.btnWrapper}
-                size="large" 
-                variant="contained"
-                onClick={onHandleLogin}
-            >
-                Login
-            </Button>
-            <ToastContainer/>
-        </li>
-    </div>
+        <div>
+            <h2 className={styles.title}>
+                Login to your Account
+            </h2>
+            <li>
+                <TextField
+                    required
+                    id="standard-required"
+                    label="Enter Email"
+                    variant="standard"
+                    value={email}
+                    onChange={onEmailChange}
+                />
+            </li>
+            <li>
+                <TextField
+                    required
+                    id="standard-password"
+                    label="Enter Password"
+                    type="password"
+                    autoComplete="current-password"
+                    variant="standard"
+                    value={password}
+                    onChange={onPasswordChange}
+                />
+            </li>
+            <li>
+                <Button 
+                    className={styles.btnWrapper}
+                    size="large" 
+                    variant="contained"
+                    onClick={onHandleLogin}
+                >
+                    Login
+                </Button>
+                <ToastContainer/>
+            </li>
+        </div>
     );
 }
 

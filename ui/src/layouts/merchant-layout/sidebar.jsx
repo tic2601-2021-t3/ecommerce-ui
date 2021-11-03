@@ -71,7 +71,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
 }));
@@ -144,13 +143,13 @@ const SideBar = () => {
         </DrawerHeader>
         <Divider />
         <List>
-          {['My Products', 'Dashboard'].map((text, index) => (
+          {['Dashboard', 'My Products'].map((text, index) => (
             <ListItem button key={text} 
               component={Link} 
-              href={(index % 2 === 0) ? '/' : '/dashboard'}
+              href={(index % 2 === 0) ? '/dashboard' : '/'}
             >
               <ListItemIcon>
-                {index % 2 === 0 ? <Assignment /> : <Dashboard />}
+                {index % 2 === 0 ? <Dashboard /> : <Assignment />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>

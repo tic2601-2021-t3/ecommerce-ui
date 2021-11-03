@@ -9,7 +9,8 @@ import {ToastContainer, toast} from 'react-toastify'
 import classNames from 'classnames';
 
 import Card from '@mui/material/Card';
-import {Button, TextField} from '@mui/material';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -57,7 +58,7 @@ const AddProduct = () => {
     }, []);
 
     const API_URL = useURL();
-    const [{ status, response }, makeRequest, { FETCHING, SUCCESS, ERROR }, source] = useRequest(API_URL.ADD_PRODUCT_URL, {
+    const [{status, response}, makeRequest, {SUCCESS, ERROR}, source] = useRequest(API_URL.ADD_PRODUCT_URL, {
         verb: 'post',
         params: {
             userId: JSON.parse(sessionStorage.getItem('email')).userId,

@@ -18,9 +18,9 @@ const LoginTab = () => {
   };
 
   return (
-    <Box sx={{ width: '100%', typography: 'body1' }}>
+    <Box sx={{width: '100%', typography: 'body1'}}>
       <TabContext value={tabItem}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
           <TabList onChange={onTabItemChange} aria-label="tabs">
             <Tab label="New Customer" value="1" />
             <Tab label="Existing Customer" value="2" />

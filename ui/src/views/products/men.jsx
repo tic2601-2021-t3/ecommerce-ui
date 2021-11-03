@@ -17,42 +17,16 @@ const Men = () => {
 
     const curUser = bytes && JSON.parse(bytes);
     const [authUser] = useState(curUser);
-    const [user, setUser] = useState('');
-    const [type, setType] = useState('');
+    const userType = (authUser === true ? JSON.parse(sessionStorage.getItem('email')).userType : '');
 
-    const userId = () => {
-        if (authUser === true) {
-            if (JSON.parse(sessionStorage.getItem('email')).userId === null || JSON.parse(sessionStorage.getItem('email')).userId === undefined)
-                setUser('');
-            else
-                setUser(JSON.parse(sessionStorage.getItem('email')).userId)
-        } else 
-            setUser('');
-    }
-    
-    const userType = () => {
-        if (authUser === true) {
-            if (JSON.parse(sessionStorage.getItem('email')).type === null || JSON.parse(sessionStorage.getItem('email')).type === undefined)
-                setType('');
-            else
-                setType(JSON.parse(sessionStorage.getItem('email')).type)
-        } else 
-            setType('');
-    }
-
-    const [{status, response}, makeRequest, {FETCHING, SUCCESS, ERROR}, source] = useRequest(API_URL.PRODUCT_LIST_URL, {
+    const [{status, response}, makeRequest, {SUCCESS, ERROR}, source] = useRequest(API_URL.PRODUCT_LIST_URL, {
         verb: 'post',
         params: {
-            userId: user,
+            userId: authUser === true && userType === 2 ? JSON.parse(sessionStorage.getItem('email')).userId : '',
             searchTerm: '',
             searchCategory: 'Mens apparel',
         },
     });
-
-    useEffect(() => {
-        userId();
-        userType();
-    }, []);
 
     useEffect(() => {
         makeRequest();
@@ -70,7 +44,7 @@ const Men = () => {
 
     return(
         <div>
-            {type !== 1 && type !== 2 && type !== 3 && (
+            {userType !== 1 && userType !== 2 && (
                 <Row>
                     <Col md={12}>
                         <img className={styles.categoryWrapper} src={MenBanner} alt='banner'/>

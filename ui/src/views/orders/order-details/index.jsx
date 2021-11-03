@@ -27,7 +27,7 @@ const OrderDetails = () => {
             <Row align='center'>
                 <Col align='center'>
                     <Card className={styles.cardWrapper}>
-                        <Table className={styles.tableWrapper} sx={{ minWidth: 650 }} aria-label="simple table">
+                        <Table className={styles.tableWrapper} sx={{minWidth: 650}} aria-label="simple table">
                             <TableHead>
                                 <TableRow>
                                     <TableCell sx={{width: '25%'}}>Item ID</TableCell>

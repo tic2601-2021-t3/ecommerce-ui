@@ -12,7 +12,7 @@ import Dashboard from 'views/dashboard';
 import Products from 'views/products';
 import ProductDetails from 'views/products/product-details';
 import AddProduct from 'views/products/add-product';
-import EditProduct from 'views/products/edit-product';
+import EditProduct from 'views/products/product-details/edit-product';
 
 const MerchantLayout = () => {
 

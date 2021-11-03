@@ -40,7 +40,7 @@ const UserManagement = () => {
     const openFlag = Boolean(open);
     const id = openFlag ? 'simple-popover' : undefined;
 
-    const [{status, response}, makeRequest, {FETCHING, SUCCESS, ERROR}, source] = useRequest(API_URL.USER_LIST_URL, {
+    const [{status, response}, makeRequest, {SUCCESS, ERROR}, source] = useRequest(API_URL.USER_LIST_URL, {
         verb: 'post',
         params: {
             email: JSON.parse(sessionStorage.getItem('email')).email.toString(),

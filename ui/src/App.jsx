@@ -57,15 +57,14 @@ const App = () => {
     }
   };
   //localStorage.clear();
-  console.log('localstorage: ', localStorage.getItem('cartItem'));
   
   return (
     <Fragment>
       <AuthContext.Provider value={{authUser, setAuthTokens: setTokens}}>
         <CartContext.Provider value={{cart, setCart: setValueToCart}}>
           {(authUser !== true || (authUser === true && JSON.parse(sessionStorage.getItem('email')).userType === 3)) && <MainLayout/>}
+          {authUser === true && JSON.parse(sessionStorage.getItem('email')).userType === 2 && <MerchantLayout/>}
         </CartContext.Provider>
-        {authUser === true && JSON.parse(sessionStorage.getItem('email')).userType === 2 && <MerchantLayout/>}
         {authUser === true && JSON.parse(sessionStorage.getItem('email')).userType === 1 && <AdminLayout/>}
       </AuthContext.Provider>
     </Fragment>
