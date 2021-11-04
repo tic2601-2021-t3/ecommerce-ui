@@ -8,13 +8,11 @@ import {Container, Row, Col} from 'react-grid-system';
 import classNames from 'classnames';
 import {ToastContainer, toast} from 'react-toastify'
 
-import useURL from 'common/urls';
+import API_URL from 'common/urls';
 import useRequest from 'common/useRequest';
 
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import ClearIcon from '@mui/icons-material/Clear';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -24,7 +22,6 @@ import TableRow from '@mui/material/TableRow'
 import styles from './styles.module.scss';
 
 const Cart = () => {
-    const API_URL = useURL();
     const [cartItems] = useState(localStorage.getItem('cartItem'));
     const cartItemsList = (cartItems !== null ? JSON.parse(cartItems) : []);
     const shippingFee = 3.90;

@@ -5,7 +5,7 @@
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 
-const { https } = require('follow-redirects');
+const {https} = require('follow-redirects');
 const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -14,15 +14,12 @@ const path = require('path');
 const csrf = require('csurf');
 const cookieParser = require('cookie-parser');
 const axios = require('axios-https-proxy-fix');
-const FormData = require('form-data');
-const fileUpload = require('express-fileupload');
 const helmet = require('helmet');
 const _ = require('lodash');
-
 const followRedirects = require('follow-redirects');
-followRedirects.maxBodyLength = 15 * 1024 * 1024;
-const { createLogger, format, transports } = require('winston');
-const { combine, timestamp, splat, simple, colorize, json, metadata, label } = format;
+  followRedirects.maxBodyLength = 15 * 1024 * 1024;
+const {createLogger, format, transports} = require('winston');
+const {combine, timestamp, splat, simple, colorize, json, metadata, label} = format;
 
 const logFormat = format.printf(info => `${info.timestamp} ${info.level} [${info.label}]: ${info.message}`);
 
@@ -35,8 +32,7 @@ const logger = createLogger({
     timestamp({
       format: 'YYYY-MM-DD HH:mm:ss'
     }),
-    splat(),
-    simple()
+    splat(), simple()
   ),
   transports: [
     new transports.Console({
@@ -59,8 +55,7 @@ const errorLogger = createLogger({
     timestamp({
       format: 'YYYY-MM-DD HH:mm:ss'
     }),
-    splat(),
-    metadata({
+    splat(), metadata({
       fillExcept: ['message', 'level', 'timestamp', 'label']
     })
   ),
@@ -85,6 +80,8 @@ let config = require('./config/production.json');
 
 if (fs.existsSync('./config/development.json')) {
   config = require('./config/development.json');
+} else if (fs.existsSync('./config/staging.json')) {
+  config = require('./config/staging.json');
 }
 
 let options = null;
@@ -106,8 +103,8 @@ app.use(
     }
   })
 );
-app.disable('x-powered-by');
 
+app.disable('x-powered-by');
 app.use(cors());
 app.use(helmet.noCache());
 app.use(helmet.xssFilter());
@@ -118,8 +115,7 @@ app.use(
     maxAge: hstsMaxAge
   })
 );
-app.use(fileUpload());
-app.use(express.static(path.join(__dirname, 'ui/build')));
+app.use(express.static(path.join(__dirname, 'build')));
 app.use(cookieParser());
 app.use(
   bodyParser.urlencoded({
@@ -146,28 +142,39 @@ const onStart = () => {
   }
 };
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*'); 
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
-  res.header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
-  res.header('Access-Control-Allow-Credentials', true);
-  res.send(200);
-  next();
+app.get('/*', csrfProtection, function(req, res, next) {
+  if (req.originalUrl.indexOf('/api') < 0) {
+    const csrfToken = req.csrfToken();
+    logger.info('csrfToken:%s', csrfToken);
+    res.cookie('XSRF-TOKEN', csrfToken);
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  } else {
+    next();
+  }
 });
 
-app.post('/*', (req, res) => {
-  logger.info(req.originalUrl);
-  res.send('POST Request Called', req.originalUrl);
+app.post('/*', csrfProtection, function(req, res) {
+  try {
+    const opts = {headers: req.headers};
+    logger.info('POST - %s', req.originalUrl);
+    caller
+      .post(config.PYTHON_URL + ':' + config.PYTHON_PORT + req.originalUrl, req.body, opts)
+      .then(function(response) {res.json(response.data);})
+  } catch (error) {
+    er('Error while posting data to PYTHON server', error);
+  }
 });
 
-app.get('/*', (req, res) => {
-  logger.info(req.originalUrl);
-  res.send('GET Request Called', req.originalUrl);
-});
-
-app.delete('/*', (req, res) => {
-  logger.info(req.originalUrl);
-  res.send('DELETE Request', req.originalUrl);
+app.get('/*', function(req, res) {
+  try {
+    const opts = {headers: req.headers};
+    logger.info('GET - %s', req.originalUrl);
+    caller
+      .get(config.PYTHON_URL + ':' + config.PYTHON_PORT + req.originalUrl, opts)
+      .then(function(response) {res.json(response.data);})
+  } catch (error) {
+    er('Error while sending GET data to PYTHON server', error);
+  }
 });
 
 try {

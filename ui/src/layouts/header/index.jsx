@@ -9,6 +9,7 @@ import {useAuthentication} from 'common/useAuthentication';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
 import {MdSearch, MdAccountCircle} from 'react-icons/md';
 import {GiShoppingBag} from 'react-icons/gi';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -17,10 +18,10 @@ import SubHeader from './subheader';
 import styles from './styles.module.scss';
 
 const Header = () => {
+    // Login
     const bytes =
-    sessionStorage.getItem('email') &&
-    sessionStorage.getItem('email') !== 'undefined';
-
+        sessionStorage.getItem('email') &&
+        sessionStorage.getItem('email') !== 'undefined';
     const curUser = bytes && JSON.parse(bytes);
     const [authUser] = useState(curUser);
     const {setAuthTokens} = useAuthentication();
@@ -34,19 +35,14 @@ const Header = () => {
     return (
         <Fragment>
             <div className={styles.wrapper}>
-                <h2 className={styles.title}>Huat Ah! Marketplace</h2>
+                <h2 className={styles.title}>
+                    <a href='/' className={styles.linkWrapper}>
+                        Huat Ah! Marketplace
+                    </a>
+                </h2>
                 <div className={styles.inputWrapper}>
                     <li>
-                        <TextField
-                            className={styles.textWrapper}
-                            id="outlined-search"
-                            type="search"
-                            size="small"
-                            placeholder="Search for Products"
-                            InputProps={{
-                                endAdornment: <MdSearch size={25} />
-                            }}
-                        />
+                        <SubHeader/>
                     </li>
                     <li>
                         <Button className={styles.btnWrapper} href={authUser === true && JSON.parse(sessionStorage.getItem('email')).userType === 3 ? '/cart' : '/login'}>
@@ -70,9 +66,6 @@ const Header = () => {
                         }
                     </li>
                 </div>
-            </div>
-            <div className={styles.subWrapper}>
-                <SubHeader/>
             </div>
         </Fragment>
     );

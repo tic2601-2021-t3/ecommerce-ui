@@ -4,10 +4,10 @@
 */
 
 import React, { useState, useEffect } from 'react';
-import { Row, Col } from 'react-grid-system';
-import { toast } from 'react-toastify'
+import {Container, Row, Col} from 'react-grid-system';
+import {toast} from 'react-toastify'
 
-import useURL from 'common/urls';
+import API_URL from 'common/urls';
 import useRequest from 'common/useRequest';
 import ProductCard from 'components/product-card';
 
@@ -15,7 +15,6 @@ import BooksBanner from 'images/category/books.png';
 import styles from './styles.module.scss';
 
 const Books = () => {
-    const API_URL = useURL();
     const bytes =
         sessionStorage.getItem('email') &&
         sessionStorage.getItem('email') !== 'undefined';
@@ -50,32 +49,30 @@ const Books = () => {
     return (
         <div>
             {userType !== 1 && userType !== 2 && (
+                <img className={styles.categoryWrapper} src={BooksBanner} alt='banner' />
+            )}
+            <Container fluid>
                 <Row>
-                    <Col md={12}>
-                        <img className={styles.categoryWrapper} src={BooksBanner} alt='banner' />
+                    <Col>
+                        <div className={styles.wrapper}>
+                            <br />
+                            <Row>
+                                {status === SUCCESS && response.products.map((row) => (
+                                    <Col md={3}>
+                                        <ProductCard
+                                            id={row.productId}
+                                            image={row.productImage}
+                                            name={row.productName}
+                                            desc={row.productDesc}
+                                            price={row.productPrice}
+                                        />
+                                    </Col>
+                                ))}
+                            </Row>
+                        </div>
                     </Col>
                 </Row>
-            )}
-            <Row>
-                <Col>
-                    <div className={styles.wrapper}>
-                        <br />
-                        <Row>
-                            {status === SUCCESS && response.products.map((row) => (
-                                <Col md={3}>
-                                    <ProductCard
-                                        id={row.productId}
-                                        image={row.productImage}
-                                        name={row.productName}
-                                        desc={row.productDesc}
-                                        price={row.productPrice}
-                                    />
-                                </Col>
-                            ))}
-                        </Row>
-                    </div>
-                </Col>
-            </Row>
+            </Container>
         </div>
     )
 }

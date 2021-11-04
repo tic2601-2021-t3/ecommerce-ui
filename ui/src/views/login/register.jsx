@@ -6,7 +6,7 @@
 import React, {useState, useEffect} from 'react';
 import {ToastContainer, toast} from 'react-toastify';
 
-import useURL from 'common/urls';
+import API_URL from 'common/urls';
 import useRequest from 'common/useRequest';
 
 import {TextField} from '@mui/material';
@@ -15,14 +15,11 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import Checkbox from '@mui/material/Checkbox';
 
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './styles.module.scss';
 
 const Register = ({location}) => {
-    const API_URL = useURL();
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

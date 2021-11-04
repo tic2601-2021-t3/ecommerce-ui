@@ -4,10 +4,10 @@
 */
 
 import React, {useEffect, useState} from 'react';
-import {ToastContainer, toast} from 'react-toastify'
+import {toast} from 'react-toastify';
 import {Container, Row, Col} from 'react-grid-system';
 
-import useURL from 'common/urls';
+import API_URL from 'common/urls';
 import useRequest from 'common/useRequest';
 
 import Table from '@mui/material/Table';
@@ -26,7 +26,6 @@ import styles from './styles.module.scss';
 
 
 const UserManagement = () => {
-    const API_URL = useURL();
     const [open, setOpen] = useState(null);
 
     const handleClick = (e) => {

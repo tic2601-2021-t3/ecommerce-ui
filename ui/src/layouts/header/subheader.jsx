@@ -17,7 +17,6 @@ const SubHeader = () => {
                 {headerMenu.map((item) => (
                     <NavLink
                         className={styles.menuItem}
-                        // activeClassName={styles.selectedMenu}
                         key={`${item.key}-${item.href}`}
                         to={item.link}>
                         {item.text}

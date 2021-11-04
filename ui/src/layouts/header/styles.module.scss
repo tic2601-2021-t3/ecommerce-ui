@@ -10,24 +10,12 @@
   background-color: $white-color;
   width: 100%;
   position: absolute;
-  padding: 25px 0;
+  padding: 5px 0;
   left: 0;
   top: 0;
   z-index: 2;
-  text-align: center
-}
-
-.subWrapper {
-  background-color: $white-color;
-  width: 100%;
-  position: absolute;
-  padding: 0 0;
-  left: 0;
-  top: 0;
-  margin-top: 90px;
-  border-top: 1px solid $border-color;
-  z-index: 2;
-  text-align: center
+  text-align: center;
+  display: fixed;
 }
 
 .title {
@@ -48,15 +36,15 @@
 }
   
 .menuItem {
-  padding: 0 40px;
+  padding: 0 35px;
   color: $primary-color;
   text-decoration: none;
   font-size: $font-normal;
   font-family: $Roboto-Condensed;
-  height: 35px;
+  height: 50px;
   display: inline-block;
   vertical-align: middle;
-  line-height: 35px;
+  line-height: 50px;
   position: relative;
   text-transform: uppercase;
 
@@ -102,4 +90,7 @@
 
 .btnWrapper {
   color: $primary-color;
+}
+.linkWrapper{
+  text-decoration: none;
 }

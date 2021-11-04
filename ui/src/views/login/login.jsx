@@ -7,7 +7,7 @@ import React, {useState, useEffect} from 'react';
 import {ToastContainer, toast} from 'react-toastify'
 import {Redirect} from 'react-router-dom';
 
-import useURL from 'common/urls';
+import API_URL from 'common/urls';
 import useRequest from 'common/useRequest';
 import {useAuthentication} from 'common/useAuthentication';
 
@@ -17,8 +17,7 @@ import Button from '@mui/material/Button';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './styles.module.scss';
 
-const Login = ({location}) => {
-    const API_URL = useURL();
+const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const {setAuthTokens} = useAuthentication();

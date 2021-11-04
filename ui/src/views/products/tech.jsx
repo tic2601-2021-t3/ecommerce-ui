@@ -4,10 +4,10 @@
 */
 
 import React, {useState, useEffect} from 'react';
-import {Row, Col} from 'react-grid-system';
+import {Container, Row, Col} from 'react-grid-system';
 import {toast} from 'react-toastify'
 
-import useURL from 'common/urls';
+import API_URL from 'common/urls';
 import useRequest from 'common/useRequest';
 import ProductCard from 'components/product-card';
 
@@ -15,7 +15,6 @@ import TechBanner from 'images/category/technology.png';
 import styles from './styles.module.scss';
 
 const Tech = () => {
-    const API_URL = useURL();
     const bytes =
     sessionStorage.getItem('email') &&
     sessionStorage.getItem('email') !== 'undefined';
@@ -49,32 +48,30 @@ const Tech = () => {
     return(
         <div>
             {userType !== 1 && userType !== 2 && (
-                <Row>
-                    <Col md={12}>
-                        <img className={styles.categoryWrapper} src={TechBanner} alt='banner'/>
-                    </Col>
-                </Row>
+                <img className={styles.categoryWrapper} src={TechBanner} alt='banner'/>
             )}
-            <Row>
-                <Col>
-                    <div className={styles.wrapper}>
-                        <br/>
-                        <Row>
-                        {status === SUCCESS && response.products.map((row) => (
-                            <Col md={3}>
-                                <ProductCard
-                                    id={row.productId}
-                                    image={row.productImage}
-                                    name={row.productName}
-                                    desc={row.productDesc}
-                                    price={row.productPrice}
-                                />
-                            </Col>
-                        ))}
-                        </Row>
-                    </div>
-                </Col>
-            </Row> 
+            <Container fluid>
+                <Row>
+                    <Col>
+                        <div className={styles.wrapper}>
+                            <br/>
+                            <Row>
+                            {status === SUCCESS && response.products.map((row) => (
+                                <Col md={3}>
+                                    <ProductCard
+                                        id={row.productId}
+                                        image={row.productImage}
+                                        name={row.productName}
+                                        desc={row.productDesc}
+                                        price={row.productPrice}
+                                    />
+                                </Col>
+                            ))}
+                            </Row>
+                        </div>
+                    </Col>
+                </Row> 
+            </Container>
         </div>
     )
 }

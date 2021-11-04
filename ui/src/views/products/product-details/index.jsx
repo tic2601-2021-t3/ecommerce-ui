@@ -17,7 +17,7 @@ import TableRow from '@mui/material/TableRow';
 import StarRateIcon from '@mui/icons-material/StarRate';
 
 import {useCart} from 'common/useCart';
-import useURL from 'common/urls';
+import API_URL from 'common/urls';
 import useRequest from 'common/useRequest';
 
 import ProductListing from 'views/products/product-details/product-listing';
@@ -27,7 +27,6 @@ const url = window.location.href;
 const id = url.substring(url.indexOf('=') + 1);
 
 const ProductDetails = () => {
-    const API_URL = useURL();
     const [itemQty, setItemQty] = useState(1);
 
     // Login Storage
@@ -70,7 +69,7 @@ const ProductDetails = () => {
                 'productName': response.product.productName,
                 'productId': response.product.productId,
                 'productQuantity': itemQty,
-                'productPrice': response.product.productPrice
+                'productPrice': itemQty * response.product.productPrice
             };
             setCart(cartProduct);
             toast.success('Item has been added to the cart.', {

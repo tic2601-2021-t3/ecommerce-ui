@@ -40,7 +40,7 @@ export const views = {
     text: 'Home',
     link: '/',
     component: Products, 
-    appearAt: appear.HEADER,
+    appearAt: null,
   },
   PRODUCT_DETAILS: {
     key: 'PRODUCT_DETAILS',

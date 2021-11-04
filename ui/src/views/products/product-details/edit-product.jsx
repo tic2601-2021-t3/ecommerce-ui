@@ -15,7 +15,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
 
-import useURL from 'common/urls';
+import API_URL from 'common/urls';
 import useRequest from 'common/useRequest';
 import { OPTIONS_TYPE } from 'components/input';
 
@@ -41,7 +41,6 @@ const EditProduct = ({productImage, productName, productCategory, productPrice, 
     }
     const onHandleCancelProduct = () => window.location.href = `/productId=${id}`;
 
-    const API_URL = useURL();
     const [{ status, response }, makeRequest, { SUCCESS, ERROR }, source] = useRequest(API_URL.EDIT_PRODUCT_URL, {
         verb: 'post',
         params: {

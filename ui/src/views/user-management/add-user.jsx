@@ -6,7 +6,7 @@
 import React, {useEffect, useState} from 'react';
 import {ToastContainer, toast} from 'react-toastify'
 
-import useURL from 'common/urls';
+import API_URL from 'common/urls';
 import useRequest from 'common/useRequest';
 
 import Button from '@mui/material/Button';
@@ -18,7 +18,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import styles from './styles.module.scss';
 
 const AddUser = ({onClose}) => {
-    const API_URL = useURL();
     const [userName, setUserName] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();

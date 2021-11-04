@@ -10,6 +10,7 @@ import {views, getHeader, appear} from 'common/permission';
 import Header from 'layouts/header';
 
 import Login from 'views/login';
+import Products from 'views/products';
 import ProductDetails from 'views/products/product-details';
 import Cart from 'views/products/product-details/cart';
 import Checkout from 'views/products/product-details/checkout';
@@ -28,6 +29,7 @@ const MainLayout = () => {
                         <Route key={`${item.key}-${item.href}`} exact path={item.link} component={item.component} />
                     ))}
                     <Route exact path={views.LOGIN.link} component={Login}/>
+                    <Route exact path={views.PRODUCTS.link} component={Products}/>
                     <Route exact path={views.PRODUCT_DETAILS.link} component={ProductDetails}/>
                     <Route exact path={views.CART.link} component={Cart}/>
                     <Route exact path={views.CHECKOUT.link} component={Checkout}/>

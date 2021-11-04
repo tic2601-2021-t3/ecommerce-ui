@@ -1,6 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Container, Row, Col} from 'react-grid-system';
+import {toast} from 'react-toastify';
 import classNames from 'classnames';
+
+import API_URL from 'common/urls';
+import useRequest from 'common/useRequest';
 
 import Card from '@mui/material/Card';
 import Table from '@mui/material/Table';
@@ -12,6 +16,28 @@ import TableRow from '@mui/material/TableRow'
 import styles from './styles.module.scss';
 
 const Orders = () => {
+    const [{status, response}, makeRequest, {SUCCESS, ERROR}, source] = useRequest(API_URL.TRANSACTION_LIST_URL, {
+        verb: 'post',
+        params: {
+            userId: JSON.parse(sessionStorage.getItem('email')).userId,
+        },
+    });
+
+    useEffect(() => {
+        makeRequest();
+        return () => {
+            source.cancel();
+        };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+        if (status === ERROR) {
+            toast.error(response.message);
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [status]);
+
     return (
         <Container fluid>
             <Row>
@@ -25,21 +51,28 @@ const Orders = () => {
                         <Table className={styles.tableWrapper} sx={{ minWidth: 650 }} aria-label="simple table">
                             <TableHead>
                                 <TableRow>
-                                    <TableCell sx={{width: '25%'}}>Order Date</TableCell>
-                                    <TableCell sx={{width: '25%'}}>Order ID</TableCell>
-                                    <TableCell sx={{width: '25%'}}>Items Purchased</TableCell>
-                                    <TableCell sx={{width: '25%'}}>Total Amount</TableCell>
+                                    <TableCell sx={{width: '16%'}}>Order Date</TableCell>
+                                    <TableCell sx={{width: '16%'}}>Order ID</TableCell>
+                                    <TableCell align='center' sx={{width: '16%'}}>Item(s) Purchased</TableCell>
+                                    <TableCell align='center' sx={{width: '16%'}}>Total Amount</TableCell>
+                                    <TableCell align='center' sx={{width: '16%'}}>Order Status</TableCell>
+                                    <TableCell sx={{width: '16%'}}>Shipping Date</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
+                            {status === SUCCESS &&
+                                response.transactions.transactions.map((row) => (
                                 <TableRow 
-                                    // key={row.user_id}
+                                    key={row.transactionId}
                                 >
-                                    <TableCell sx={{width: '25%'}}>2021-09-20</TableCell>
-                                    <TableCell sx={{width: '25%'}}><a className={styles.linkTextWrapper} href={`/orders/orderId=${123}`}>{123}</a></TableCell>
-                                    <TableCell sx={{width: '25%'}}>10</TableCell>
-                                    <TableCell sx={{width: '25%'}}>S$123</TableCell>
+                                    <TableCell sx={{width: '16%'}}>{row.orderDate}</TableCell>
+                                    <TableCell sx={{width: '16%'}}><a className={styles.linkTextWrapper} href={`/orders/orderId=${row.transactionId}`}>{row.transactionId}</a></TableCell>
+                                    <TableCell align='center' sx={{width: '16%'}}>{row.itemPurchased}</TableCell>
+                                    <TableCell align='center' sx={{width: '16%'}}>S${row.totalAmount}</TableCell>
+                                    <TableCell align='center'sx={{width: '16%'}}>{row.orderStatus}</TableCell>
+                                    <TableCell sx={{width: '16%'}}>{row.shippedDate}</TableCell>
                                 </TableRow>
+                            ))}
                             </TableBody>
                         </Table>
                     </Card>
