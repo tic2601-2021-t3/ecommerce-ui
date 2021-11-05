@@ -107,7 +107,7 @@ app.use(helmet.xssFilter());
 app.use(helmet.noSniff());
 const hstsMaxAge = 31536000;
 app.use(helmet.hsts({maxAge: hstsMaxAge}));
-app.use(express.static(path.join(__dirname, 'ui/build')));
+app.use(express.static(path.join(__dirname, 'build')));
 app.use(cookieParser());
 app.use(express.urlencoded({extended: true})); 
 app.use(express.json());   
@@ -136,7 +136,7 @@ app.get('/*', csrfProtection, function(req, res, next) {
     const csrfToken = req.csrfToken();
     logger.info('csrfToken:%s', csrfToken);
     res.cookie('XSRF-TOKEN', csrfToken);
-    res.sendFile(path.join(__dirname, 'ui/build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
   } else {
     next();
   }

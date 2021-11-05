@@ -11,7 +11,7 @@ const API_URL = {
   PRODUCT_LIST_URL: '/product/getProductList',
   PRODUCT_DETAIL_URL: '/product/getProduct',
   TRANSACTION_LIST_URL: '/transaction/getTransactionList',
-  TRANSACTION_DETAIL_URL: 'transaction/getTransaction',
+  TRANSACTION_DETAIL_URL: '/transaction/getTransaction',
   ADD_TRANSACTION_URL: '/transaction/addTransaction',
   USER_LIST_URL: '/user/getUserList',
 };

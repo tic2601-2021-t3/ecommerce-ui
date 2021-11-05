@@ -29,17 +29,19 @@ const ProductListing = ({productImage, productName, productCategory, userName, p
     }
     return (
         <Fragment>
-            <Row>
-                <Col align='end'>
-                    <div className={styles.wrapper}>
-                        <Button
-                            onClick={onHandleEditProduct}
-                        >
-                            Edit Product
-                        </Button>
-                    </div>
-                </Col>
-            </Row>
+            {userType === 2 && (
+                <Row>
+                    <Col align='end'>
+                        <div className={styles.wrapper}>
+                            <Button
+                                onClick={onHandleEditProduct}
+                            >
+                                Edit Product
+                            </Button>
+                        </div>
+                    </Col>
+                </Row>
+            )}
             <Row align='center'>
                 <Col align='center'>
                     <Card className={styles.cardWrapper}>

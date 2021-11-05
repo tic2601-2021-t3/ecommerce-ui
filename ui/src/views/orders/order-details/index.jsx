@@ -26,8 +26,8 @@ const OrderDetails = () => {
     const [{status, response}, makeRequest, {SUCCESS, ERROR}, source] = useRequest(API_URL.TRANSACTION_DETAIL_URL, {
         verb: 'post',
         params: {
-            userId: JSON.parse(sessionStorage.getItem('email')).userId,
             transactionId: id,
+            userId: JSON.parse(sessionStorage.getItem('email')).userId,
         },
     });
 
@@ -57,19 +57,25 @@ const OrderDetails = () => {
                             </Col>
                         </Row>
                         <Row>
-                            <Col md={4}>
+                            <Col md={3}>
                                 <Card>
                                     <p className={styles.label}>Order Date</p>
                                     <p className={styles.value}>{response.transaction.orderDate}</p>
                                 </Card>
                             </Col>
-                            <Col md={4}>
+                            <Col md={3}>
+                                <Card>
+                                    <p className={styles.label}>Total Amount</p>
+                                    <p className={styles.value}>S${response.transaction.totalAmount}</p>
+                                </Card>
+                            </Col>
+                            <Col md={3}>
                                 <Card>
                                     <p className={styles.label}>Order Status</p>
                                     <p className={styles.value}>{response.transaction.orderStatus}</p>
                                 </Card>
                             </Col>
-                            <Col md={4}>
+                            <Col md={3}>
                                 <Card>
                                     <p className={styles.label}>Shipping Date</p>
                                     <p className={styles.value}>{response.transaction.shippedDate}</p>
@@ -85,11 +91,11 @@ const OrderDetails = () => {
                             <Table className={styles.tableWrapper} sx={{minWidth: 650}} aria-label="simple table">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell sx={{width: '20%'}}>Product ID</TableCell>
-                                        <TableCell sx={{width: '20%'}}>Product Name</TableCell>
-                                        <TableCell sx={{width: '20%'}}>Merchant</TableCell>
-                                        <TableCell align='center' sx={{width: '20%'}}>Product Quantity</TableCell>
-                                        <TableCell align='center' sx={{width: '20%'}}>Product Amount</TableCell>
+                                        <TableCell sx={{width: '15%'}}>Product ID</TableCell>
+                                        <TableCell sx={{width: '30%'}}>Product Name</TableCell>
+                                        <TableCell sx={{width: '18%'}}>Merchant</TableCell>
+                                        <TableCell align='center' sx={{width: '18%'}}>Product Quantity</TableCell>
+                                        <TableCell align='center' sx={{width: '18%'}}>Product Amount</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -98,11 +104,21 @@ const OrderDetails = () => {
                                     <TableRow 
                                         key={row.productId}
                                     >
-                                        <TableCell sx={{width: '20%'}}>{row.productId}</TableCell>
-                                        <TableCell sx={{width: '20%'}}>{row.productName}</TableCell>
-                                        <TableCell sx={{width: '20%'}}>{row.userName}</TableCell>
-                                        <TableCell align='center' sx={{width: '20%'}}>{row.productQuantity}</TableCell>
-                                        <TableCell align='center' sx={{width: '20%'}}>S${row.productPrice}</TableCell>
+                                        <TableCell sx={{width: '15%'}}>{row.productId}</TableCell>
+                                        <TableCell sx={{width: '30%'}}>
+                                            <div>
+                                                {row.productId !== 0 && (
+                                                    <Fragment>
+                                                        <img className={styles.checkoutImage} src={row.productImage} alt='Product Image'/>
+                                                        &nbsp;
+                                                    </Fragment>
+                                                )}
+                                                {row.productName}
+                                            </div>
+                                        </TableCell>
+                                        <TableCell sx={{width: '18%'}}>{row.userName}</TableCell>
+                                        <TableCell align='center' sx={{width: '18%'}}>{row.productQuantity}</TableCell>
+                                        <TableCell align='center' sx={{width: '18%'}}>S${row.productPrice}</TableCell>
                                     </TableRow>
                                 ))}
                                 </TableBody>
