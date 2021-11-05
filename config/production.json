@@ -1,5 +1,5 @@
 {
-    "FE_URL": "http://localhost",
+    "FE_URL": "http://167.172.7.66",
     "FE_PORT": "8080",
     "PYTHON_URL": "http://167.172.7.66",
     "PYTHON_PORT": "8448"

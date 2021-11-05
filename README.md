@@ -6,12 +6,12 @@
 ### Run UI on Development Mode
 1. `npm install`*
 2. `yarn ui-install`* 
-3. `yarn client-win`
+3. `yarn dev`
 <br/>
 *Only require when running it for the first time
 ### Start NodeJS
 1. `yarn build`
-2. `yarn server`
+2. `yarn server-dev`
 
 ## Deployment on Server
 1. `yarn build`

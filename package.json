@@ -42,11 +42,11 @@
     "eslint-plugin-standard": "^4.0.1"
   },
   "scripts": {
-    "server": "node index.js",
-    "client-win": "cd ui && set HTTPS=true&&yarn start",
-    "dev": "cd ui && yarn start",
+    "dev": "cd ui && set HTTPS=true&&yarn start",
     "ui-install": "cd ui && yarn install",
     "build": "cd ui && yarn build",
+    "server-dev": "set NODE_ENV=development && node index.js",
+    "server": "node index.js",
     "deploy": "node deploy.js"
   },
   "author": "Rina Chua",

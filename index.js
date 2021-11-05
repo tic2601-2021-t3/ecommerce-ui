@@ -8,13 +8,13 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 const {https} = require('follow-redirects');
 const fs = require('fs');
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 const csrf = require('csurf');
 const cookieParser = require('cookie-parser');
 const axios = require('axios-https-proxy-fix');
 const helmet = require('helmet');
+const noCache = require('nocache');
 const _ = require('lodash');
 const followRedirects = require('follow-redirects');
   followRedirects.maxBodyLength = 15 * 1024 * 1024;
@@ -80,17 +80,13 @@ let config = require('./config/production.json');
 
 if (fs.existsSync('./config/development.json')) {
   config = require('./config/development.json');
-} else if (fs.existsSync('./config/staging.json')) {
-  config = require('./config/staging.json');
 }
 
 let options = null;
 let server = null;
 let httpsAgent = null;
 
-const csrfProtection = csrf({
-  cookie: true
-});
+const csrfProtection = csrf({cookie: true});
 
 app.use(
   helmet.contentSecurityPolicy({
@@ -106,22 +102,15 @@ app.use(
 
 app.disable('x-powered-by');
 app.use(cors());
-app.use(helmet.noCache());
+app.use(noCache());
 app.use(helmet.xssFilter());
 app.use(helmet.noSniff());
 const hstsMaxAge = 31536000;
-app.use(
-  helmet.hsts({
-    maxAge: hstsMaxAge
-  })
-);
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(helmet.hsts({maxAge: hstsMaxAge}));
+app.use(express.static(path.join(__dirname, 'ui/build')));
 app.use(cookieParser());
-app.use(
-  bodyParser.urlencoded({
-  })
-);
-app.use(bodyParser.json());
+app.use(express.urlencoded({extended: true})); 
+app.use(express.json());   
 
 const baseOpt = {
   maxContentLength: Infinity,
@@ -147,7 +136,7 @@ app.get('/*', csrfProtection, function(req, res, next) {
     const csrfToken = req.csrfToken();
     logger.info('csrfToken:%s', csrfToken);
     res.cookie('XSRF-TOKEN', csrfToken);
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'ui/build', 'index.html'));
   } else {
     next();
   }
