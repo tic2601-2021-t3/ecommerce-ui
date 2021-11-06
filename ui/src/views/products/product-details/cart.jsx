@@ -68,7 +68,7 @@ const Cart = () => {
         setTimeout(function(){
             localStorage.clear();
             window.location.href='/checkout';
-        }, 3000);
+        }, 2000);
     }
 
     useEffect(() => {

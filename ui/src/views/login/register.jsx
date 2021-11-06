@@ -42,23 +42,13 @@ const Register = ({location}) => {
     const onHandleRegister = () => makeRequest();
 
     useEffect(() => {
-        if (status === ERROR) {
+        if (status === SUCCESS) {
+            toast.success(response.message);
+        }
+        else if (status === ERROR) {
             toast.error(response.message);
         }
     }, [status]);
-
-    const customId = 'id1';
-
-    if (status === SUCCESS && response.status === 0) {
-        toast.success(response.message, {
-            toastId: customId,
-        });
-    }
-    else if (status === SUCCESS && response.status === 1) {
-        toast.error(response.message, {
-            toastId: customId,
-        });
-    }
     
     return (
         <div>
@@ -101,7 +91,7 @@ const Register = ({location}) => {
                 <FormControl component="fieldset">
                     <div className={styles.radioWrapper}>
                         <label>Register As</label>
-                        <RadioGroup row aria-label="userType" defaultValue="3" name="row-radio-buttons-group" onChange={onUserTypeChange}>
+                        <RadioGroup row aria-label="userType" defaultValue="3" value={userType} name="row-radio-buttons-group" onChange={onUserTypeChange}>
                             <FormControlLabel value="3" control={<Radio />} label="Customer" />
                             <FormControlLabel value="2" control={<Radio />} label="Merchant" />
                         </RadioGroup>

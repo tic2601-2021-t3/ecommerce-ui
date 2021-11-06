@@ -45,7 +45,7 @@ const Login = () => {
         toast.success(response.message, {
             toastId: customId,
         });
-        return <Redirect to={response.userType === 1 ? '/user-management' : response.userType === 2 ? '/dashboard' : '/'} />;
+        return <Redirect to={response.userType === 1 ? '/user-management' : response.userType === 2 ? '/' : '/'} />;
     }
     else if (status === SUCCESS && response.status === 1) {
         toast.error(response.message, {

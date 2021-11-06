@@ -143,13 +143,13 @@ const SideBar = () => {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Dashboard', 'My Products'].map((text, index) => (
+          {['My Products', 'Dashboard'].map((text, index) => (
             <ListItem button key={text} 
               component={Link} 
-              href={(index % 2 === 0) ? '/dashboard' : '/'}
+              href={(index % 2 === 0) ? '/' : '/dashboard'}
             >
               <ListItemIcon>
-                {index % 2 === 0 ? <Dashboard /> : <Assignment />}
+                {index % 2 === 0 ? <Assignment /> : <Dashboard />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>

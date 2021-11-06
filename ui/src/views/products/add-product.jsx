@@ -39,7 +39,7 @@ const AddProduct = () => {
     const onProductPriceChange = (e) => setProductPrice(e.target.value);
     const onHandleAddProduct = () => { 
         makeRequest();
-        setTimeout(function(){window.location.href='/';}, 3000);
+        setTimeout(function(){window.location.href='/';}, 2000);
     };
     const onHandleCancel = () => window.history.back();
 

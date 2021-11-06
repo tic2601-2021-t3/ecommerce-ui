@@ -37,7 +37,7 @@ const EditProduct = ({productImage, productName, productCategory, productPrice, 
     const onEditedProductPriceChange = (e) => setEditedProductPrice(e.target.value);
     const onHandleSaveProduct = () => {
         makeRequest();
-        setTimeout(function(){window.location.href=`/productId=${id}`;}, 3000);
+        setTimeout(function(){window.location.href=`/productId=${id}`;}, 2000);
     }
     const onHandleCancelProduct = () => window.location.href = `/productId=${id}`;
 
