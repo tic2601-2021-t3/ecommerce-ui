@@ -9,13 +9,15 @@
 3. `yarn dev`
 <br/>
 *Only require when running it for the first time
+
 ### Start NodeJS
 1. `yarn build`
 2. `yarn server-dev`
 
 ## Deployment on Server
 1. `yarn build`
-2. `yarn deploy`
+2. Pack into a folder: `index.js`,`build`,`production.json`,`package.json`,`package.lock`,`node_modules`
+3. Deploy command: `node index.js &`
 
 ## Miscellaneous
 ### Shortcut to open VSC on Terminal
