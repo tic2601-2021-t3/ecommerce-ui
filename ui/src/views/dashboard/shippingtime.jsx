@@ -13,7 +13,7 @@ import useRequest from 'common/useRequest';
 
 const colors = ['#1101ED']
 
-const ShippingDate = () => {
+const ShippingTime = () => {
   const bytes =
     sessionStorage.getItem('email') &&
     sessionStorage.getItem('email') !== 'undefined';
@@ -44,7 +44,7 @@ const ShippingDate = () => {
   const getChartOpts = () => {
     return {
       title: {
-        text: 'Average Shipping Date',
+        text: 'Average Shipping Time',
         style: {
           fontFamily: 'Roboto Condensed',
         },
@@ -78,4 +78,4 @@ const ShippingDate = () => {
   return <HighchartsReact options={getChartOpts()} highcharts={Highcharts} />;
 };
 
-export default ShippingDate;
+export default ShippingTime;

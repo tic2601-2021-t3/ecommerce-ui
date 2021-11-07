@@ -10,7 +10,7 @@ import Card from '@mui/material/Card';
 
 import MomSales from './momsales';
 import ReturningCustomers from './returningcust';
-import ShippingDate from './shippingdate';
+import ShippingTime from './shippingtime';
 import ProductSales from './productsales';
 import SalesByDay from './salesbyday';
 
@@ -44,7 +44,7 @@ const Dashboard = () => {
                 </Col>
                 <Col align='center' md={4}>
                     <Card>
-                        <ShippingDate/>
+                        <ShippingTime/>
                     </Card>
                 </Col>
             </Row>
