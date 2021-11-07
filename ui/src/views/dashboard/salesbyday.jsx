@@ -3,12 +3,44 @@
   Date: 13 Oct 2021
 */
 
+import React, {useEffect, useState} from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import {toast} from 'react-toastify'
+
+import API_URL from 'common/urls';
+import useRequest from 'common/useRequest';
 
 const colors = ['#1101ED'];
 
-const BarChart2 = () => {
+const SalesByDay = () => {
+    const bytes =
+        sessionStorage.getItem('email') &&
+        sessionStorage.getItem('email') !== 'undefined';
+    const curUser = bytes && JSON.parse(bytes);
+    const [authUser] = useState(curUser);
+
+    const [{status, response}, makeRequest, {SUCCESS, ERROR}, source] = useRequest(API_URL.DASHBOARD_URL, {
+        verb: 'post',
+        params: {
+            userId: authUser === true ? JSON.parse(sessionStorage.getItem('email')).userId : '',
+            chart: 'week_sales', 
+        },
+    });
+
+    useEffect(() => {
+        makeRequest();
+        return () => {
+            source.cancel();
+        };
+    }, []);
+
+    useEffect(() => {
+        if (status === ERROR) {
+            toast.error(response.message);
+        }
+    }, [status]);
+
     const getChartOpts = () => {
       return {
         chart: {
@@ -21,15 +53,7 @@ const BarChart2 = () => {
             },
         },
         xAxis: {
-            categories: [
-                'Monday',
-                'Tuesday',
-                'Wednesday',
-                'Thursday',
-                'Friday',
-                'Saturday',
-                'Sunday',
-            ],
+            categories: (status === SUCCESS && response.dashboard.categories),
             crosshair: true
         },
         yAxis: {
@@ -62,17 +86,11 @@ const BarChart2 = () => {
         },
         series: [{
             name: 'Sales',
-            data: [7300, 12600, 15250, 8500, 6400, 9700, 12550],
+            data: (status === SUCCESS && response.dashboard.data),
             color: colors[0],
         }]};
     };
-    // if (isLoading) {
-    //     return <Loading />;
-    // } else if (_.isEmpty(data)) {
-    //     return <Empty text='No chart data found.' />;
-    // }
-    
     return <HighchartsReact options={getChartOpts()} highcharts={Highcharts} />;
 };
 
-export default BarChart2;
+export default SalesByDay;

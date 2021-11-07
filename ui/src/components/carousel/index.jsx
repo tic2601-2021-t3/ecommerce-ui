@@ -1,3 +1,8 @@
+/*
+  Author: Rina Chua
+  Date: 14 Oct 2021
+*/
+
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel'
 import 'bootstrap/dist/css/bootstrap.css';

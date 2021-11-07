@@ -14,5 +14,6 @@ const API_URL = {
   TRANSACTION_DETAIL_URL: '/transaction/getTransaction',
   ADD_TRANSACTION_URL: '/transaction/addTransaction',
   USER_LIST_URL: '/user/getUserList',
+  DASHBOARD_URL: '/dashboard',
 };
 export default API_URL;

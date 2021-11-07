@@ -8,11 +8,11 @@ import {Container, Row, Col} from 'react-grid-system';
 
 import Card from '@mui/material/Card';
 
-import LineChart from './linechart';
-import LineChart2 from './linechart2';
-import LineChart3 from './linechart3';
-import BarChart from './barchart';
-import BarChart2 from './barchart2';
+import MomSales from './momsales';
+import ReturningCustomers from './returningcust';
+import ShippingDate from './shippingdate';
+import ProductSales from './productsales';
+import SalesByDay from './salesbyday';
 
 const Dashboard = () => {
     return(
@@ -20,12 +20,12 @@ const Dashboard = () => {
             <Row align='center'>
                 <Col align='center' md={6}>
                     <Card>
-                        <BarChart/>
+                        <ProductSales/>
                     </Card>
                 </Col>
                 <Col align='center' md={6}>
                     <Card>
-                        <BarChart2/>
+                        <SalesByDay/>
                     </Card>
                 </Col>
 
@@ -34,17 +34,17 @@ const Dashboard = () => {
             <Row align='center'>
                 <Col align='center' md={4}>
                     <Card>
-                        <LineChart/>
+                        <MomSales/>
                     </Card>
                 </Col>
                 <Col align='center' md={4}>
                     <Card>
-                        <LineChart2/>
+                        <ReturningCustomers/>
                     </Card>
                 </Col>
                 <Col align='center' md={4}>
                     <Card>
-                        <LineChart3/>
+                        <ShippingDate/>
                     </Card>
                 </Col>
             </Row>

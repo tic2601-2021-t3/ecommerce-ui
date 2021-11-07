@@ -3,31 +3,57 @@
   Date: 13 Oct 2021
 */
 
+import React, {useEffect, useState} from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import {toast} from 'react-toastify'
+
+import API_URL from 'common/urls';
+import useRequest from 'common/useRequest';
 
 const colors = ['#1101ED'];
 
-const BarChart = () => {
+const ProductSales = () => {
+    const bytes =
+        sessionStorage.getItem('email') &&
+        sessionStorage.getItem('email') !== 'undefined';
+    const curUser = bytes && JSON.parse(bytes);
+    const [authUser] = useState(curUser);
+
+    const [{status, response}, makeRequest, {SUCCESS, ERROR}, source] = useRequest(API_URL.DASHBOARD_URL, {
+        verb: 'post',
+        params: {
+            userId: authUser === true ? JSON.parse(sessionStorage.getItem('email')).userId : '',
+            chart: 'top_sales', 
+        },
+    });
+
+    useEffect(() => {
+        makeRequest();
+        return () => {
+            source.cancel();
+        };
+    }, []);
+
+    useEffect(() => {
+        if (status === ERROR) {
+            toast.error(response.message);
+        }
+    }, [status]);
+
     const getChartOpts = () => {
       return {
         chart: {
             type: 'column'
         },
         title: {
-            text: 'Top 5 Product Sales by Revenue for Last Month',
+            text: 'Top 3 Product Sales by Revenue for Last Month',
             style: {
                 fontFamily: 'Roboto Condensed',
             },
         },
         xAxis: {
-            categories: [
-                'Google Pixel 5',
-                'Men Dior Underwear',
-                'Ribena',
-                'Thyme',
-                'Basil',
-            ],
+            categories: (status === SUCCESS && response.dashboard.categories),
             crosshair: true
         },
         yAxis: {
@@ -60,17 +86,11 @@ const BarChart = () => {
         },
         series: [{
             name: 'Sales',
-            data: [7200, 6400, 5500, 4000, 3900],
+            data: (status === SUCCESS && response.dashboard.data),
             color: colors[0],
         }]};
-    };
-    // if (isLoading) {
-    //     return <Loading />;
-    // } else if (_.isEmpty(data)) {
-    //     return <Empty text='No chart data found.' />;
-    // }
-    
+    };    
     return <HighchartsReact options={getChartOpts()} highcharts={Highcharts} />;
 };
 
-export default BarChart;
+export default ProductSales;

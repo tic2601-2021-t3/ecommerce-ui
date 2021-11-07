@@ -1,3 +1,8 @@
+/*
+  Author: Rina Chua
+  Date: 31 Oct 2021
+*/
+
 import React, {useEffect} from 'react';
 import {Container, Row, Col} from 'react-grid-system';
 import {toast} from 'react-toastify';
