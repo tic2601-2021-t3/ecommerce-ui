@@ -52,7 +52,12 @@ const AddUser = ({onClose}) => {
                 toastId: customId,
             }
         );
-        setTimeout(function(){onClose();}, 5000);
+        setTimeout(function(){
+            onClose();
+        }, 1500);
+        setTimeout(function(){
+            window.location.reload();
+        }, 2000);
     }
     else if (status === SUCCESS && response.status === 1) {
         toast.error(response.message,

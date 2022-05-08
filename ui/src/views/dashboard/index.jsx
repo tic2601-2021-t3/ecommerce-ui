@@ -28,7 +28,6 @@ const Dashboard = () => {
                         <SalesByDay/>
                     </Card>
                 </Col>
-
             </Row>
             <br/>
             <Row align='center'>

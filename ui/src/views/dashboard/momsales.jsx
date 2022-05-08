@@ -51,7 +51,12 @@ const MomSales = () => {
       },
       yAxis: {
         title: {
-          text: 'Sales'
+          text: 'Sales (%)'
+        }
+      },
+      tooltip: {
+        formatter: function() {
+          return 'Sales (%): ' + this.y;
         }
       },
       plotOptions: {

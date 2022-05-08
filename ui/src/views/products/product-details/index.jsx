@@ -69,7 +69,7 @@ const ProductDetails = () => {
                 'productName': response.product.productName,
                 'productId': response.product.productId,
                 'productQuantity': itemQty,
-                'productPrice': itemQty * response.product.productPrice
+                'productPrice': (itemQty * response.product.productPrice).toFixed(2)
             };
             setCart(cartProduct);
             toast.success('Item has been added to the cart.', {

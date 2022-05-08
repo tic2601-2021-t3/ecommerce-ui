@@ -54,12 +54,15 @@ const ProductSales = () => {
         },
         xAxis: {
             categories: (status === SUCCESS && response.dashboard.categories),
-            crosshair: true
+            crosshair: true,
+            title: {
+                text: 'Products',
+            },
         },
         yAxis: {
             min: 0,
             title: {
-                text: 'Sales'
+                text: 'Sales ($)'
             }
         },
         tooltip: {

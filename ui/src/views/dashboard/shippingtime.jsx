@@ -54,6 +54,11 @@ const ShippingTime = () => {
           text: 'Number of Hours'
         }
       },
+      tooltip: {
+        formatter: function() {
+          return 'Number of Hours: ' + this.y;
+        }
+      },
       plotOptions: {
         series: {
           label: {

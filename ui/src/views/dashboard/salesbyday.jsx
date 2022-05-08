@@ -54,12 +54,15 @@ const SalesByDay = () => {
         },
         xAxis: {
             categories: (status === SUCCESS && response.dashboard.categories),
-            crosshair: true
+            crosshair: true,
+            title: {
+                text: 'Day of Week'
+            },
         },
         yAxis: {
             min: 0,
             title: {
-                text: 'Day of Week'
+                text: 'Sales ($)'
             }
         },
         tooltip: {

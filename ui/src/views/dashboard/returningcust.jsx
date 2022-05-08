@@ -51,7 +51,7 @@ const ReturningCustomers = () => {
       },
       yAxis: {
         title: {
-          text: 'Sales'
+          text: 'Sales (%)'
         }
       },
       plotOptions: {
@@ -64,6 +64,11 @@ const ReturningCustomers = () => {
             enabled: true
           },
         },
+      },
+      tooltip: {
+        formatter: function() {
+          return 'Sales (%): ' + this.y;
+        }
       },
       credits: {
         enabled: false,
